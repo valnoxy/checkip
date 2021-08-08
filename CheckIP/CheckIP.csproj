@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows10.0.19041.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>Exploitox - Modern.ico</ApplicationIcon>
+    <Authors>valnoxy</Authors>
+    <Company>Exploitox - Unleash your exploits!</Company>
+    <Description>Get information about IP addresses</Description>
+    <Copyright>Copyright © 2018 - 2021 Exploitox. All rights reserved.</Copyright>
+    <RepositoryUrl>https://github.com/valnoxy/checkip</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Emoji.Wpf" Version="0.3.3" />
+    <PackageReference Include="FluentWPF" Version="0.9.0" />
+    <PackageReference Include="ModernWpfUI" Version="0.9.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+</Project>

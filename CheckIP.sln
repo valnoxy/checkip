@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckIP", "CheckIP\CheckIP.csproj", "{2CFE2279-B648-45C5-BE54-88968977BBCE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2CFE2279-B648-45C5-BE54-88968977BBCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CFE2279-B648-45C5-BE54-88968977BBCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CFE2279-B648-45C5-BE54-88968977BBCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CFE2279-B648-45C5-BE54-88968977BBCE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {261A587F-7A61-49C7-8C85-433FD4D0DDA9}
+	EndGlobalSection
+EndGlobal
