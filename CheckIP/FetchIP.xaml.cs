@@ -5,6 +5,7 @@ using System.Collections;
 using System.Net;
 using System.Net.Http;
 using System.Windows;
+using System.Windows.Input;
 
 namespace CheckIP
 {
@@ -20,6 +21,19 @@ namespace CheckIP
         }
 
         private void FetchIP_Click(object sender, RoutedEventArgs e)
+        {
+            ParseIPaddr();
+        }
+
+        private void OnKeyDownHandler(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                ParseIPaddr();
+            }
+        }
+
+        private void ParseIPaddr()
         {
             progress.IsActive = true;
             progress.Visibility = Visibility.Visible;

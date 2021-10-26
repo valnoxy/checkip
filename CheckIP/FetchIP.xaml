@@ -12,7 +12,7 @@
         <ui:ProgressRing x:Name="progress" Margin="245,0,0,299" VerticalAlignment="Bottom" HorizontalAlignment="Left" Foreground="{DynamicResource SystemBaseHighColorBrush}" Height="32" Width="32"/>
         <Label x:Name="labelTitle" Content="Options" HorizontalAlignment="Left" Margin="15,8,0,0" VerticalAlignment="Top" FontSize="20" Foreground="{DynamicResource SystemBaseHighColorBrush}"/>
         <Label Content="IP Address" HorizontalAlignment="Left" Margin="15,45,0,0" VerticalAlignment="Top" Foreground="{DynamicResource SystemBaseHighColorBrush}"/>
-        <TextBox x:Name="IPaddr" HorizontalAlignment="Left" Margin="15,69,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="271" Foreground="{DynamicResource SystemBaseHighColorBrush}"/>
+        <TextBox x:Name="IPaddr" HorizontalAlignment="Left" Margin="15,69,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="271" Foreground="{DynamicResource SystemBaseHighColorBrush}" KeyDown="OnKeyDownHandler"/>
         <Button Content="Fetch Information" Margin="291,69,0,0" VerticalAlignment="Top" Height="32" Width="130" Foreground="{DynamicResource SystemBaseHighColorBrush}" Click="FetchIP_Click"/>
         <Label x:Name="labelTitle2" Content="Information" HorizontalAlignment="Left" Margin="15,118,0,0" VerticalAlignment="Top" FontSize="20" Foreground="{DynamicResource SystemBaseHighColorBrush}"/>
         <Label Content="City / Country" HorizontalAlignment="Left" Margin="22,156,0,0" VerticalAlignment="Top" Foreground="{DynamicResource SystemBaseHighColorBrush}"/>

@@ -7,9 +7,10 @@
     <ApplicationIcon>Exploitox - Modern.ico</ApplicationIcon>
     <Authors>valnoxy</Authors>
     <Company>Exploitox - Unleash your exploits!</Company>
-    <Description>Get information about IP addresses</Description>
+    <Description>Get more information about an IP address.</Description>
     <Copyright>Copyright © 2018 - 2021 Exploitox. All rights reserved.</Copyright>
     <RepositoryUrl>https://github.com/valnoxy/checkip</RepositoryUrl>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

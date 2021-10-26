@@ -10,7 +10,7 @@
 
     <Grid>
         <Label x:Name="labelTitle" Content="CheckIP" HorizontalAlignment="Left" Margin="15,8,0,0" VerticalAlignment="Top" FontSize="20" Foreground="{DynamicResource SystemBaseHighColorBrush}"/>
-        <Label x:Name="valueVersion" Content="Version: 1.0.0" Margin="15,40,0,0" Foreground="{DynamicResource SystemBaseMediumColorBrush}" Height="19" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Label x:Name="valueVersion" Content="Version: 1.0.1" Margin="15,40,0,0" Foreground="{DynamicResource SystemBaseMediumColorBrush}" Height="19" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <Label x:Name="valueCopyright" Content="Copyright © 2018 - 2021 Exploitox. All rights reserved." Margin="15,59,0,0" Foreground="{DynamicResource SystemBaseMediumColorBrush}" Height="19" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <TextBlock x:Name="licenseText" Margin="15,92,10,0" Height="268" VerticalAlignment="Top" Foreground="{DynamicResource SystemBaseHighColorBrush}" FontSize="14" AllowDrop="True" TextWrapping="WrapWithOverflow">
             This program is free software: you can redistribute it and/or modify
