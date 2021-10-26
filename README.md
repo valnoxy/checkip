@@ -25,7 +25,7 @@ CheckIP is a GUI based application which can provide much information about an I
 
 <a href="https://github.com/valnoxy/checkip/releases"><strong>GitHub Releases »</strong></a>
 
-Using winget: ```winget install checkip```
+Using winget: ```winget install --id Exploitox.CheckIP```
 
 ## License (GNU GPL)
 This program is free software: you can redistribute it and/or modify
