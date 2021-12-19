@@ -21,7 +21,7 @@ CheckIP is a GUI based application which can provide much information about an I
 ![CheckIP - Fetch Data](https://dl.exploitox.de/checkip/CheckIP_FetchData.png) ![CheckIP - My IP](https://dl.exploitox.de/checkip/CheckIP_MyIP.png)
 
 ## Download
-<a href="https://dl.exploitox.de/checkip/CheckIP_V1.0.0_Setup.exe"><strong>External (Homepage) »</strong></a>
+<a href="https://dl.exploitox.de/checkip/CheckIP_V1.0.1_Setup.exe"><strong>External (Homepage) »</strong></a>
 
 <a href="https://github.com/valnoxy/checkip/releases"><strong>GitHub Releases »</strong></a>
 
