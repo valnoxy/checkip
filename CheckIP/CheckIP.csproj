@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows10.0.18362.0</TargetFramework>
+    <TargetFramework>net6.0-windows10.0.19041.0</TargetFramework>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>Exploitox - Modern.ico</ApplicationIcon>
     <Authors>valnoxy</Authors>
@@ -10,7 +10,7 @@
     <Description>Get more information about an IP address.</Description>
     <Copyright>Copyright © 2018 - 2022 Exploitox. All rights reserved.</Copyright>
     <RepositoryUrl>https://github.com/valnoxy/checkip</RepositoryUrl>
-    <Version>1.0.1</Version>
+    <Version>2.0.0</Version>
     <StartupObject>CheckIP.Program</StartupObject>
   </PropertyGroup>
 

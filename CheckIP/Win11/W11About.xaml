@@ -69,7 +69,7 @@
                 <wpfui:Hyperlink
                                 Content="GNU General Public License"
                                 Icon="Link48"
-                                NavigateUri="https://exploitox.de/license/checkip" FontSize="15"/>
+                                NavigateUri="https://exploitox.de/license/checkip" FontSize="15" Cursor="Hand"/>
             </StackPanel>
         </Grid>
     </Grid>
