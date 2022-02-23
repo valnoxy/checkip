@@ -6,7 +6,7 @@
         xmlns:pages="clr-namespace:CheckIP.Win11"
         xmlns:wpfui="clr-namespace:WPFUI.Controls;assembly=WPFUI"
         WindowStartupLocation="CenterScreen"
-        Style="{StaticResource UiWindow}">
+        Style="{StaticResource UiWindow}" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
