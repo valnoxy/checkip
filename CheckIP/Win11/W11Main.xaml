@@ -28,12 +28,12 @@
                 <wpfui:NavigationStore.Items>
                     <wpfui:NavigationItem
                         Content="Fetch"
-                        Icon="Home24"
+                        Icon="Search24"
                         Tag="dashboard"
                         Type="{x:Type pages:W11FetchIP}" Cursor="Hand" />
                     <wpfui:NavigationItem
                         Content="My IP"
-                        Icon="Apps24"
+                        Icon="MyLocation24"
                         Tag="forms"
                         Type="{x:Type pages:W11MyIP}" />
                 </wpfui:NavigationStore.Items>

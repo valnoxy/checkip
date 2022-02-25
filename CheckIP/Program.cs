@@ -13,7 +13,7 @@ namespace CheckIP
         {
             int build = Environment.OSVersion.Version.Build;
 
-            if (build <= 22000)
+            if (build < 22000)
             {
                 var application = new W10();
                 application.InitializeComponent();

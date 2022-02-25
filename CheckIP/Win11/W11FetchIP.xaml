@@ -18,8 +18,8 @@
 
         <Grid Grid.Row="1">
             <Label Content="IP Address" HorizontalAlignment="Left" Margin="0,44,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextFillColorPrimaryBrush}" FontFamily="Segoe UI Variable Display" FontSize="15"/>
-            <TextBox x:Name="IPaddr" HorizontalAlignment="Left" Margin="0,68,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="296" Foreground="{DynamicResource TextFillColorPrimaryBrush}" KeyDown="OnKeyDownHandler" />
-            <Button Content="Fetch" Margin="301,68,0,0" VerticalAlignment="Top" Height="34" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Click="FetchIP_Click"/>
+            <TextBox x:Name="IPaddr" HorizontalAlignment="Left" Margin="0,68,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="306" Foreground="{DynamicResource TextFillColorPrimaryBrush}" KeyDown="OnKeyDownHandler" />
+            <Button Content="Fetch" Margin="301,68,0,0" VerticalAlignment="Top" HorizontalAlignment="Right" Height="34" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Click="FetchIP_Click" Cursor="Hand"/>
         </Grid>
         <Grid Grid.Row="2" Margin="0,20,0,-20">
             <Label Content="Information" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" Foreground="{DynamicResource TextFillColorPrimaryBrush}" FontFamily="Segoe UI Variable Display" FontWeight="SemiBold"/>
