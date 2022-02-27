@@ -14,7 +14,10 @@ namespace CheckIP.Win11
         {
             WPFUI.Background.Manager.Apply(this);
             InitializeComponent();
+
+            // Enable Mica design
             IntPtr windowHandle = new WindowInteropHelper(this).Handle;
+            WPFUI.Background.Manager.Remove(windowHandle);
             this.Background = Brushes.Transparent;
             WPFUI.Background.Manager.Apply(WPFUI.Background.BackgroundType.Mica, windowHandle);
         }
