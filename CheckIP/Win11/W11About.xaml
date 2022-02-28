@@ -45,7 +45,7 @@
         <Grid Grid.Row="2">
             <StackPanel>
                 <Label x:Name="labelTitle" Content="About this App" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="15" Foreground="{DynamicResource TextFillColorPrimaryBrush}" FontWeight="Bold" FontFamily="Segoe UI Variable Display"/>
-                <Label x:Name="valueVersion" Content="CheckIP V.2.0.0" Foreground="{DynamicResource TextFillColorPrimaryBrush}" FontSize="15" VerticalAlignment="Top" HorizontalAlignment="Left" FontFamily="Segoe UI Variable Display"/>
+                <Label x:Name="valueVersion" Content="CheckIP V. 2.0.0" Foreground="{DynamicResource TextFillColorPrimaryBrush}" FontSize="15" VerticalAlignment="Top" HorizontalAlignment="Left" FontFamily="Segoe UI Variable Display"/>
                 <Label x:Name="valueCopyright" Content="Copyright © 2018 - 2022 Exploitox. All rights reserved." FontSize="15" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Top" HorizontalAlignment="Left" FontFamily="Segoe UI Variable Display"/>
                 <TextBlock x:Name="licenseText" VerticalAlignment="Top" Foreground="{DynamicResource TextFillColorPrimaryBrush}" FontSize="15" TextWrapping="WrapWithOverflow" FontFamily="Segoe UI Variable Display" Height="100">
                     This program is free software: you can redistribute it and/or modify
