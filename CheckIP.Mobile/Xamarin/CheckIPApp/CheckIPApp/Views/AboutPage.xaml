@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CheckIPApp.Views.AboutPage"
+             xmlns:vm="clr-namespace:CheckIPApp.ViewModels" 
+             xmlns:rv="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
+             Title="{Binding Title}" 
+             BackgroundColor="{AppThemeBinding Light=White, Dark=#121212}" >
+
+    <ContentPage.BindingContext>
+        <vm:AboutViewModel />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#512bdf</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill" Margin="20">
+                <rv:MaterialFrame>
+                    <StackLayout>
+                        <Label Text="CheckIP" FontSize="30" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
+                        <Label Text="Version 1.0.0.185" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />
+                        <Label Text="Copyright © 2022 valnoxy" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />
+                        <Label Text="Alpha Build (alpha-1.0-2)" FontSize="Small" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Red" />
+                        <Label FontSize="Small" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Red" Text="{OnPlatform iOS='Xamarin 15.9.100 (cf971a68e)', Android='Xamarin 12.3.0.3 (d17-2/bbba5a2))'}"/>
+                    </StackLayout>
+                </rv:MaterialFrame>
+            </StackLayout>
+
+            <ScrollView Grid.Row="1">
+                <StackLayout Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
+                    <Label Text="License" FontSize="Title"/>
+                    <Label Text="This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version." FontSize="16" Padding="0,0,0,0"/>
+                    <Label FontSize="16" Padding="0,8,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="Learn more at "/>
+                                    <Span Text="https://github.com/valnoxy/checkip/" FontAttributes="Bold"/>
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Button Margin="0,10,0,0" Text="Learn more"
+                        Command="{Binding OpenWebCommand}"
+                        BackgroundColor="{StaticResource Primary}"
+                        TextColor="White" />
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ScrollView>
+
+</ContentPage>

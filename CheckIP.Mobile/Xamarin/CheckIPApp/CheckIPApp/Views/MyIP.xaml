@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CheckIPApp.Views.MyIP"
+             xmlns:vm="clr-namespace:CheckIPApp.ViewModels"
+             xmlns:rv="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
+             Title="My IP" 
+             BackgroundColor="{AppThemeBinding Light=White, Dark=#121212}" >
+
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid ColumnDefinitions="*">
+                <StackLayout Margin="0,10,0,10">
+                    <Grid Style="{StaticResource GridStyle}">
+                        <rv:MaterialFrame>
+                            <StackLayout>
+                                <Label Text="My IP address" FontAttributes="Bold"/>
+                                <Label x:Name="ipAddress" Text="n/a" HorizontalOptions="Start" />
+                            </StackLayout>
+                        </rv:MaterialFrame>
+                    </Grid>
+
+                    <Grid Style="{StaticResource GridStyle}">
+                        <rv:MaterialFrame>
+                            <StackLayout>
+                                <Label Text="City / Country" FontAttributes="Bold"/>
+                                <Label x:Name="valueCityCountry" Text="Unknown" />
+                            </StackLayout>
+                        </rv:MaterialFrame>
+                    </Grid>
+
+                    <Grid Style="{StaticResource GridStyle}">
+                        <rv:MaterialFrame>
+                            <StackLayout>
+                                <Label Text="Postal" FontAttributes="Bold"/>
+                                <Label x:Name="valuePostal" Text="Unknown" />
+                            </StackLayout>
+                        </rv:MaterialFrame>
+                    </Grid>
+
+                    <Grid Style="{StaticResource GridStyle}">
+                        <rv:MaterialFrame>
+                            <StackLayout>
+                                <Label Text="Timezone" FontAttributes="Bold"/>
+                                <Label x:Name="valueTimezone" Text="Unknown" />
+                            </StackLayout>
+                        </rv:MaterialFrame>
+                    </Grid>
+
+                    <Grid Style="{StaticResource GridStyle}">
+                        <rv:MaterialFrame>
+                            <StackLayout>
+                                <Label Text="Latitude" FontAttributes="Bold"/>
+                                <Label x:Name="valueLatitude" Text="Unknown" />
+                            </StackLayout>
+                        </rv:MaterialFrame>
+                    </Grid>
+
+                    <Grid Style="{StaticResource GridStyle}">
+                        <rv:MaterialFrame>
+                            <StackLayout>
+                                <Label Text="Longitude" FontAttributes="Bold"/>
+                                <Label x:Name="valueLongitude" Text="Unknown" />
+                            </StackLayout>
+                        </rv:MaterialFrame>
+                    </Grid>
+
+                    <Grid Style="{StaticResource GridStyle}">
+                        <rv:MaterialFrame>
+                            <StackLayout>
+                                <Label Text="ISP or Organization" FontAttributes="Bold"/>
+                                <Label x:Name="valueISP" Text="Unknown" />
+                            </StackLayout>
+                        </rv:MaterialFrame>
+                    </Grid>
+
+                    <Grid Style="{StaticResource GridStyle}">
+                        <rv:MaterialFrame>
+                            <StackLayout>
+                                <Label Text="ASN" FontAttributes="Bold"/>
+                                <Label x:Name="valueASN" Text="Unknown" />
+                            </StackLayout>
+                        </rv:MaterialFrame>
+                    </Grid>
+
+                    <Grid Style="{StaticResource GridStyle}">
+                        <rv:MaterialFrame>
+                            <StackLayout>
+                                <Label Text="Mobile" FontAttributes="Bold"/>
+                                <Label x:Name="valueMobile" Text="Unknown" />
+                            </StackLayout>
+                        </rv:MaterialFrame>
+                    </Grid>
+
+                    <Grid Style="{StaticResource GridStyle}">
+                        <rv:MaterialFrame>
+                            <StackLayout>
+                                <Label Text="Proxy" FontAttributes="Bold"/>
+                                <Label x:Name="valueProxy" Text="Unknown" />
+                            </StackLayout>
+                        </rv:MaterialFrame>
+                    </Grid>
+
+                    <Grid Style="{StaticResource GridStyle}">
+                        <rv:MaterialFrame>
+                            <StackLayout>
+                                <Label Text="Hosting" FontAttributes="Bold"/>
+                                <Label x:Name="valueHosting" Text="Unknown" />
+                            </StackLayout>
+                        </rv:MaterialFrame>
+                    </Grid>
+
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+    
+</ContentPage>

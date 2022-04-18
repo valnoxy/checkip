@@ -348,3 +348,10 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# Google Play Store keystore file
+*.keystore
+*.pw
+
+# Apple DS Store
+.DS_Store

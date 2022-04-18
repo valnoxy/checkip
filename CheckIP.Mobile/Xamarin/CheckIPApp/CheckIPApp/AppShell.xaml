@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms" 
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:CheckIPApp.Views"
+       Title="CheckIPApp"
+       x:Class="CheckIPApp.AppShell"
+       xmlns:styles="clr-namespace:CheckIPApp.Styles" >
+
+    <!--
+        The overall app visual hierarchy is defined here, along with navigation.
+    
+        https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/
+    -->
+    
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.BackgroundColor" Value="{StaticResource Primary}" />
+                <Setter Property="Shell.ForegroundColor" Value="White" />
+                <Setter Property="Shell.TitleColor" Value="White" />
+                <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
+                <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource Primary}" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="White"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="White"/>
+            </Style>
+            <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
+            <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    
+    <TabBar>
+        <ShellContent Title="Fetch IP" ContentTemplate="{DataTemplate local:FetchIP}">
+            <ShellContent.Icon>
+                <FontImageSource
+                    FontFamily="MaterialIcons"
+                    Glyph="{x:Static styles:FontIconHelper.Magnify}"
+                    Size="{OnPlatform Android=18, iOS=24}"
+                    />
+            </ShellContent.Icon>
+        </ShellContent>
+
+        <ShellContent Title="My IP" ContentTemplate="{DataTemplate local:MyIP}">
+            <ShellContent.Icon>
+                <FontImageSource
+                    FontFamily="MaterialIcons"
+                    Glyph="{x:Static styles:FontIconHelper.CrosshairsGps}"
+                    Size="{OnPlatform Android=18, iOS=24}"
+                    />
+            </ShellContent.Icon>
+        </ShellContent>
+        
+        <ShellContent Title="About" Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" >
+            <ShellContent.Icon>
+                <FontImageSource
+                    FontFamily="MaterialIcons"
+                    Glyph="{x:Static styles:FontIconHelper.HelpCircleOutline}"
+                    Size="{OnPlatform Android=18, iOS=24}"
+                    />
+            </ShellContent.Icon>
+        </ShellContent>
+    </TabBar>
+    
+</Shell>

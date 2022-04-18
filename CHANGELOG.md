@@ -12,6 +12,12 @@
 
 ## Changelog
 
+### Version 2.1.0
+- Add mobile source code (iOS & Android)
+- Add Windows 11 UI for Windows 10 users
+- Update libraries
+- Add CLI project (WIP)
+
 ### Version 2.0.0
 - New UI for Windows 11 users
 

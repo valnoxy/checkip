@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CheckIPApp.App"
+             >
+    <!--
+        Define global resources and styles here, that apply to all pages in your app.
+    -->
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/Colors.xaml" />
+                <ResourceDictionary Source="/Styles/MaterialFrame.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            
+            <Color x:Key="Primary">#512bdf</Color>
+            <Style TargetType="Button">
+                <Setter Property="TextColor" Value="White"></Setter>
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="#332196F3" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+            
+            <!--
+                Custom Grid settings
+            -->
+            <Style x:Key="GridStyle" TargetType="Grid">
+                <!-- <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=White, Dark=#121212}"/> -->
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="Margin" Value="15, 5, 15, 0"/>
+                <Setter Property="RowSpacing" Value="5"/>
+            </Style>
+
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{AppThemeBinding Light=Black, Dark=White}"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+            </Style>
+
+            <Style TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=White, Dark=#1e1e1e}"/>
+            </Style>
+
+            <Style TargetType="ContentPage" x:Name="GlobalBG">
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=White, Dark=#121212}" />
+            </Style>
+
+        </ResourceDictionary>        
+    </Application.Resources>
+</Application>
