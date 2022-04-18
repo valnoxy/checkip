@@ -32,6 +32,8 @@ CheckIP is a GUI based application which can provide much information about an I
 [![AppStore](https://dl.exploitox.de/checkip/AppStoreBadge.png)](https://apps.apple.com/us/app/checkip-ip-informations/id1618841457)
 [![MicrosoftStore](https://dl.exploitox.de/checkip/MicrosoftStoreBadge.png)](https://www.microsoft.com/store/apps/9NFGS0SX9CP3)
 
+<a href="https://testflight.apple.com/join/auUvXWJJ">Join iOS Beta via TestFlight »</a>
+
 > Note: The mobile applications are currently in beta. The MAUI source base is outdated and and exists only for archival purposes. After MAUI is more stable, this project will move from Xamarin to MAUI.
 
 ## License (GNU GPL)
