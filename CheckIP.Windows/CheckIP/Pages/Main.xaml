@@ -7,7 +7,8 @@
         xmlns:pages="clr-namespace:CheckIP"
         xmlns:wpfui="clr-namespace:WPFUI.Controls;assembly=WPFUI"
         WindowStartupLocation="CenterScreen"
-        Style="{StaticResource UiWindow}" ResizeMode="NoResize">
+        Style="{StaticResource UiWindow}"
+        ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -20,7 +21,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <wpfui:NavigationStore
+           <wpfui:NavigationStore
                 x:Name="RootNavigation"
                 Grid.Column="0"
                 Margin="6,0,6,0"
@@ -31,22 +32,22 @@
                         Content="Fetch"
                         Icon="Search24"
                         Tag="dashboard"
-                        Type="{x:Type pages:FetchIP}" Cursor="Hand" />
+                        Page="{x:Type pages:FetchIP}" />
                     <wpfui:NavigationItem
                         Content="My IP"
                         Icon="MyLocation24"
                         Tag="forms"
-                        Type="{x:Type pages:MyIP}" />
+                        Page="{x:Type pages:MyIP}" />
                 </wpfui:NavigationStore.Items>
                 <wpfui:NavigationStore.Footer>
                     <wpfui:NavigationItem
                         Content="About"
                         Icon="QuestionCircle24"
                         Tag="help"
-                        Type="{x:Type pages:About}" />
+                        Page="{x:Type pages:About}" />
                 </wpfui:NavigationStore.Footer>
-            </wpfui:NavigationStore>
-
+            </wpfui:NavigationStore> 
+            
             <Border
                 Grid.Column="1"
                 Background="{DynamicResource ControlFillColorDefaultBrush}"
@@ -63,23 +64,7 @@
             </Border>
         </Grid>
 
-        <wpfui:Dialog
-            x:Name="LibDialog"
-            Grid.Row="0"
-            Grid.RowSpan="2"
-            ButtonRightClick="LibDialog_RightButtonClick"
-            ButtonLeftName="Ok"
-            ButtonLeftClick="LibDialog_RightButtonClick"
-            Show="False">
-            <Grid>
-                <StackPanel>
-                    <TextBlock FontWeight="Medium" Text="Open-Source Licenses" />
-                    <ListBox ItemsSource="{Binding ThirdPartyList}" SelectedIndex="0" Margin="0,8,0,0" Height="100"/>
-                </StackPanel>
-            </Grid>
-        </wpfui:Dialog>
-
         <Label x:Name="debugLabel" Grid.Row="0" Content="" Margin="92,17,0,0"/>
-        <wpfui:TitleBar Grid.Row="0" ApplicationNavigation="True" ShowMaximize="False" ShowMinimize="False" Title="CheckIP" Icon="pack://application:,,,/icon.png"/>
+        <wpfui:TitleBar Grid.Row="0" ShowMaximize="False" ShowMinimize="False" Title="CheckIP" Icon="pack://application:,,,/icon.png"/>
     </Grid>
 </Window>

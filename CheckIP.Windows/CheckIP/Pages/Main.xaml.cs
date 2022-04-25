@@ -47,9 +47,5 @@ namespace CheckIP
             Environment.Exit(0);
         }
         
-        private void LibDialog_RightButtonClick(object sender, RoutedEventArgs e)
-        {
-            LibDialog.Show = false;
-        }
     }
 }

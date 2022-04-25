@@ -12,10 +12,5 @@ namespace CheckIP
         {
             InitializeComponent();
         }
-
-        private void ShowDialog_Libs(object sender, System.Windows.RoutedEventArgs e)
-        {
-            (((Main)System.Windows.Application.Current.MainWindow)!).LibDialog.Show = true;
-        }
     }
 }
