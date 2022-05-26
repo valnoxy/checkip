@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CheckIPApp.Views.AboutPage"
              xmlns:vm="clr-namespace:CheckIPApp.ViewModels" 
-             xmlns:rv="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
              Title="{Binding Title}" 
              BackgroundColor="{AppThemeBinding Light=White, Dark=#121212}" >
 
@@ -24,7 +23,7 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill" Margin="20">
-                <rv:MaterialFrame>
+                <Frame>
                     <StackLayout>
                         <Label Text="CheckIP" FontSize="30" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
                         <Label Text="Version 1.0.0.185" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />
@@ -32,7 +31,7 @@
                         <Label Text="Alpha Build (alpha-1.0-2)" FontSize="Small" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Red" />
                         <Label FontSize="Small" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Red" Text="{OnPlatform iOS='Xamarin 15.9.100 (cf971a68e)', Android='Xamarin 12.3.0.3 (d17-2/bbba5a2))'}"/>
                     </StackLayout>
-                </rv:MaterialFrame>
+                </Frame>
             </StackLayout>
 
             <ScrollView Grid.Row="1">

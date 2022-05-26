@@ -3,12 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CheckIPApp.Views.FetchIP"
              xmlns:vm="clr-namespace:CheckIPApp.ViewModels" 
-             xmlns:rv="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
              Title="Fetch IP" 
              BackgroundColor="{AppThemeBinding Light=White, Dark=#121212}" >
 
     <ContentPage.Resources>
-        <Style TargetType="rv:MaterialFrame">
+        <Style TargetType="Frame">
             <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=White, Dark=#121212}" />
         </Style>
     </ContentPage.Resources>
@@ -18,103 +17,103 @@
             <Grid ColumnDefinitions="*">
                 <StackLayout Margin="0,10,0,10">
                     <Grid Style="{StaticResource GridStyle}">
-                        <rv:MaterialFrame>
+                        <Frame>
                             <StackLayout>
                                 <Label Text="Enter IP Address" Margin="0,0,0,5"/>
                                 <Entry x:Name="ipAddress" Placeholder="IP Address" Keyboard="Text" Margin="0,0,0,5"/>
                                 <Button Text="Fetch IP address" Clicked="FetchIPBtn_Clicked"/>
                             </StackLayout>
-                        </rv:MaterialFrame>
+                        </Frame>
                     </Grid>
 
                     <Grid Style="{StaticResource GridStyle}">
-                        <rv:MaterialFrame>
+                        <Frame>
                             <StackLayout>
                                 <Label Text="City / Country" FontAttributes="Bold"/>
                                 <Label x:Name="valueCityCountry" Text="Unknown" />
                             </StackLayout>
-                        </rv:MaterialFrame>
+                        </Frame>
                     </Grid>
 
                     <Grid Style="{StaticResource GridStyle}">
-                        <rv:MaterialFrame>
+                        <Frame>
                             <StackLayout>
                                 <Label Text="Postal" FontAttributes="Bold"/>
                                 <Label x:Name="valuePostal" Text="Unknown" />
                             </StackLayout>
-                        </rv:MaterialFrame>
+                        </Frame>
                     </Grid>
 
                     <Grid Style="{StaticResource GridStyle}">
-                        <rv:MaterialFrame>
+                        <Frame>
                             <StackLayout>
                                 <Label Text="Timezone" FontAttributes="Bold"/>
                                 <Label x:Name="valueTimezone" Text="Unknown" />
                             </StackLayout>
-                        </rv:MaterialFrame>
+                        </Frame>
                     </Grid>
 
                     <Grid Style="{StaticResource GridStyle}">
-                        <rv:MaterialFrame>
+                        <Frmae>
                             <StackLayout>
                                 <Label Text="Latitude" FontAttributes="Bold"/>
                                 <Label x:Name="valueLatitude" Text="Unknown" />
                             </StackLayout>
-                        </rv:MaterialFrame>
+                        </Frmae>
                     </Grid>
 
                     <Grid Style="{StaticResource GridStyle}">
-                        <rv:MaterialFrame>
+                        <Frame>
                             <StackLayout>
                                 <Label Text="Longitude" FontAttributes="Bold"/>
                                 <Label x:Name="valueLongitude" Text="Unknown" />
                             </StackLayout>
-                        </rv:MaterialFrame>
+                        </Frame>
                     </Grid>
 
                     <Grid Style="{StaticResource GridStyle}">
-                        <rv:MaterialFrame>
+                        <Frame>
                             <StackLayout>
                                 <Label Text="ISP or Organization" FontAttributes="Bold"/>
                                 <Label x:Name="valueISP" Text="Unknown" />
                             </StackLayout>
-                        </rv:MaterialFrame>
+                        </Frame>
                     </Grid>
 
                     <Grid Style="{StaticResource GridStyle}">
-                        <rv:MaterialFrame>
+                        <Frame>
                             <StackLayout>
                                 <Label Text="ASN" FontAttributes="Bold"/>
                                 <Label x:Name="valueASN" Text="Unknown" />
                             </StackLayout>
-                        </rv:MaterialFrame>
+                        </Frame>
                     </Grid>
 
                     <Grid Style="{StaticResource GridStyle}">
-                        <rv:MaterialFrame>
+                        <Frame>
                             <StackLayout>
                                 <Label Text="Mobile" FontAttributes="Bold"/>
                                 <Label x:Name="valueMobile" Text="Unknown" />
                             </StackLayout>
-                        </rv:MaterialFrame>
+                        </Frame>
                     </Grid>
 
                     <Grid Style="{StaticResource GridStyle}">
-                        <rv:MaterialFrame>
+                        <Frame>
                             <StackLayout>
                                 <Label Text="Proxy" FontAttributes="Bold"/>
                                 <Label x:Name="valueProxy" Text="Unknown" />
                             </StackLayout>
-                        </rv:MaterialFrame>
+                        </Frame>
                     </Grid>
 
                     <Grid Style="{StaticResource GridStyle}">
-                        <rv:MaterialFrame>
+                        <Frame>
                             <StackLayout>
                                 <Label Text="Hosting" FontAttributes="Bold"/>
                                 <Label x:Name="valueHosting" Text="Unknown" />
                             </StackLayout>
-                        </rv:MaterialFrame>
+                        </Frame>
                     </Grid>
 
                 </StackLayout>
