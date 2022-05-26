@@ -1,5 +1,26 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <UseMaui>true</UseMaui>
+    <TargetFramework>net6.0-ios</TargetFramework>
+    <OutputType>Exe</OutputType>
+    	<ImplicitUsings>enable</ImplicitUsings>
+
+  </PropertyGroup>
+
+  <!-- <ItemGroup>
+    <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+    </ItemGroup> -->
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\CheckIPApp\CheckIPApp.csproj">
+      <Project>{C11AEF24-1C9A-42BE-AB32-9B64FDA6173A}</Project>
+      <Name>CheckIPApp</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>
+
+<!-- <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
@@ -157,4 +178,4 @@
       <Name>CheckIPApp</Name>
     </ProjectReference>
   </ItemGroup>
-</Project>
+</Project> -->
