@@ -8,13 +8,15 @@
 [![License](https://img.shields.io/badge/license-GNU%20General%20Public%20License-purple)](/LICENSE)
 
 <p align="center">
-   <strong>Status: Maintained</strong>
+   <strong>Status: </strong>Maintained
    <br />
-   <strong>Version: </strong>2.1.0-alpha2
+   <strong>WPF Version: </strong>2.2.0
    <br />
-   <a href="https://github.com/valnoxy/t480-oc/issues">Report Bug</a>
+   <strong>Xamarin Version: </strong>2.1.0-alpha2
+   <br />
+   <a href="https://github.com/valnoxy/checkip/issues">Report Bug</a>
    ·
-   <a href="https://github.com/valnoxy/t480-oc/blob/main/CHANGELOG.md">View Changelog</a>
+   <a href="https://github.com/valnoxy/checkip/releases">Download</a>
   </p>
 </p>
 </br>
