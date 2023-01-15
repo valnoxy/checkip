@@ -2,16 +2,15 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows10.0.19041.0</TargetFramework>
+    <TargetFramework>net7.0-windows10.0.19041.0</TargetFramework>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>CheckIP.ico</ApplicationIcon>
     <Authors>valnoxy</Authors>
-    <Company>Exploitox - Unleash your exploits!</Company>
+    <Company>Exploitox</Company>
     <Description>Get more information about an IP address.</Description>
-    <Copyright>Copyright © 2018 - 2022 Exploitox. All rights reserved.</Copyright>
+    <Copyright>Copyright © 2018 - 2023 Exploitox. All rights reserved.</Copyright>
     <RepositoryUrl>https://github.com/valnoxy/checkip</RepositoryUrl>
-    <Version>2.1.0</Version>
-    <StartupObject>CheckIP.Program</StartupObject>
+    <Version>2.2.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -35,10 +34,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentWPF" Version="0.10.2" />
-    <PackageReference Include="MicaWPF" Version="2.0.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="WPF-UI" Version="1.2.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+    <PackageReference Include="WPF-UI" Version="2.0.3" />
   </ItemGroup>
 
   <ItemGroup>

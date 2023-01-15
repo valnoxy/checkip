@@ -1,7 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Win32;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
+using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -16,8 +18,7 @@ namespace CheckIP
     /// </summary>
     public partial class FetchIP : Page
     {
-        Main mw = (Main)Application.Current.MainWindow;
-        public static string myip;
+        private static string _myIp;
         
         public FetchIP()
         {
@@ -26,53 +27,43 @@ namespace CheckIP
 
         private void FetchIP_Click(object sender, RoutedEventArgs e)
         {
-            myip = IPaddr.Text;
-            Task.Run(() => ParseIPaddr());
+            _myIp = IpAddress.Text;
+            Task.Run(ParseIpAddress);
         }
 
         private void OnKeyDownHandler(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Return)
-            {
-                myip = IPaddr.Text;
-                Task.Run(() => ParseIPaddr());
-            }
+            if (e.Key != Key.Return) return;
+            _myIp = IpAddress.Text;
+            Task.Run(ParseIpAddress);
         }
 
-        private void ParseIPaddr()
+        private void ParseIpAddress()
         {
             // Validate IP
-            IPAddress ip;
-            bool ValidateIP = IPAddress.TryParse(myip, out ip);
-            if (!ValidateIP)
+            var validateIp = IPAddress.TryParse(_myIp, out var ip);
+            if (!validateIp)
             {
-                this.Dispatcher.Invoke(() =>
+                Dispatcher.Invoke(() =>
                 {
                     errorLabel.Content = "Error: This is not a valid IP address";
                 });
                 return;
             }
-            else
-            {
-                this.Dispatcher.Invoke(() =>
-                {
-                    errorLabel.Content = string.Empty;
-                });
-            }
 
-            string dataJson = string.Empty;
-            string strIpLocation = string.Empty;
-            string url = "http://ip-api.com/json/" + myip + "?fields=status,message,country,countryCode,city,zip,lat,lon,timezone,isp,as,mobile,proxy,hosting";
+            Dispatcher.Invoke(() =>
+            {
+                errorLabel.Content = string.Empty;
+            });
+
+            var dataJson = string.Empty;
+            var url = "http://ip-api.com/json/" + _myIp + "?fields=status,message,country,countryCode,city,zip,lat,lon,timezone,isp,as,mobile,proxy,hosting";
             try
             {
-                HttpClient client = new HttpClient();
-                using (HttpResponseMessage response = client.GetAsync(url).Result)
-                {
-                    using (HttpContent content = response.Content)
-                    {
-                        dataJson = content.ReadAsStringAsync().Result;
-                    }
-                }
+                var client = new HttpClient();
+                using var response = client.GetAsync(url).Result;
+                using var content = response.Content;
+                dataJson = content.ReadAsStringAsync().Result;
             }
             catch
             {
@@ -81,20 +72,13 @@ namespace CheckIP
                     errorLabel.Content = "Error: No connection to server";
                 });
             }
-
-            var dictionary = JsonConvert.DeserializeObject<IDictionary>(dataJson);
-            foreach (var key in dictionary.Keys)
-            {
-                Console.WriteLine(key);
-                strIpLocation += key.ToString() + ": " + dictionary[key] + "\r\n";
-            }
             dynamic data = JObject.Parse(dataJson);
 
             // Parse data
             string status = data.status;
             string message = data.message;
             string country = data.country;
-            string country_code = data.countryCode;
+            string countryCode = data.countryCode;
             string city = data.city;
             string postal = data.zip;
             string timezone = data.timezone;
@@ -109,37 +93,63 @@ namespace CheckIP
             // Check status
             if (status != "success")
             {
-                this.Dispatcher.Invoke(() =>
+                Dispatcher.Invoke(() =>
                 {
                     errorLabel.Content = "Error: " + message;
-                    valueCityCountry.Content = "Unknown";
-                    valuePostal.Content = "Unknown";
-                    valueTimezone.Content = "Unknown";
-                    valueLatitude.Content = "Unknown";
-                    valueLongitude.Content = "Unknown";
-                    valueISP.Content = "Unknown";
-                    valueASN.Content = "Unknown";
-                    valueMobile.Content = "Unknown";
-                    valueProxy.Content = "Unknown";
-                    valueHosting.Content = "Unknown";
+                    valueCityCountry.Text = "Unknown";
+                    valuePostal.Text = "Unknown";
+                    valueTimezone.Text = "Unknown";
+                    valueLatitude.Text = "Unknown";
+                    valueLongitude.Text = "Unknown";
+                    valueISP.Text = "Unknown";
+                    valueASN.Text = "Unknown";
+                    valueMobile.Text = "Unknown";
+                    valueProxy.Text = "Unknown";
+                    valueHosting.Text = "Unknown";
                 });
                 return;
             }
 
             // Set Variable labels
-            this.Dispatcher.Invoke(() =>
+            Dispatcher.Invoke(() =>
             {
-                valueCityCountry.Content = city + " / " + country + " (" + country_code + ")";
-                valuePostal.Content = postal;
-                valueTimezone.Content = timezone;
-                valueLatitude.Content = latitude;
-                valueLongitude.Content = longitude;
-                valueISP.Content = isp;
-                valueASN.Content = asn;
-                valueMobile.Content = mobile;
-                valueProxy.Content = proxy;
-                valueHosting.Content = hosting;
+                valueCityCountry.Text = city + " / " + country + " (" + countryCode + ")";
+                valuePostal.Text = postal;
+                valueTimezone.Text = timezone;
+                valueLatitude.Text = latitude;
+                valueLongitude.Text = longitude;
+                valueISP.Text = isp;
+                valueASN.Text = asn;
+                valueMobile.Text = mobile;
+                valueProxy.Text = proxy;
+                valueHosting.Text = hosting;
             });
+        }
+
+        private void ExportBtn_OnClick(object sender, RoutedEventArgs e)
+        {
+            // Build export string
+            var exportString = $@"Report created at {DateTime.Now} for IP {IpAddress.Text}
+
+City / Country: {valueCityCountry.Text}
+Postal: {valuePostal.Text}
+Timezone: {valueTimezone.Text}
+Latitude: {valueLatitude.Text}
+Longitude: {valueLongitude.Text}
+ISP or Organization: {valueISP.Text}
+ASN: {valueASN.Text}
+Is Mobile: {valueMobile.Text}
+Is Proxy: {valueProxy.Text}
+Is Hosting: {valueHosting.Text}
+";
+
+            var saveFileDialog = new SaveFileDialog
+            {
+                Filter = "Text file (*.txt)|*.txt",
+                FileName = "CheckIP_Report.txt"
+            };
+            if (saveFileDialog.ShowDialog() == true)
+                File.WriteAllText(saveFileDialog.FileName, exportString);
         }
     }
 }

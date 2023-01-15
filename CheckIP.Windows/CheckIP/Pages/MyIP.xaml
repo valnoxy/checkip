@@ -3,48 +3,174 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:wpfui="clr-namespace:WPFUI.Controls;assembly=WPFUI"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
       xmlns:local="clr-namespace:CheckIP"
       mc:Ignorable="d" 
-      d:DesignHeight="516" d:DesignWidth="441"
+      d:DesignHeight="625" d:DesignWidth="441"
       Title="MyIP">
 
-    <Grid Margin="18,20,18,0">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
+    <StackPanel Margin="20,55,18,0">
 
-        <Grid Grid.Row="1">
-            <Label Content="IP Address" HorizontalAlignment="Left" Margin="0,44,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextFillColorPrimaryBrush}" FontFamily="Segoe UI Variable Display" FontSize="15"/>
-            <Label x:Name="IPaddr" Content="Unknown" HorizontalAlignment="Center" Margin="0,73,0,0" VerticalAlignment="Top" FontSize="25" Foreground="{DynamicResource TextFillColorPrimaryBrush}" FontFamily="Segoe UI Variable Display"/>
-        </Grid>
-        <Grid Grid.Row="2" Margin="0,20,0,-20">
-            <Label Content="Information" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" Foreground="{DynamicResource TextFillColorPrimaryBrush}" FontFamily="Segoe UI Variable Display" FontWeight="SemiBold"/>
-            <Label Content="City / Country" HorizontalAlignment="Left" Margin="0,37,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextFillColorPrimaryBrush}" FontFamily="Segoe UI Variable Display" FontSize="15"/>
-            <Label Content="Postal" HorizontalAlignment="Left" Margin="0,61,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextFillColorPrimaryBrush}" FontFamily="Segoe UI Variable Display" FontSize="15"/>
-            <Label Content="Timezone" HorizontalAlignment="Left" Margin="0,85,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextFillColorPrimaryBrush}" FontFamily="Segoe UI Variable Display" FontSize="15"/>
-            <Label Content="Latitude" HorizontalAlignment="Left" Margin="0,109,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextFillColorPrimaryBrush}" FontFamily="Segoe UI Variable Display" FontSize="15"/>
-            <Label Content="Longitude" HorizontalAlignment="Left" Margin="0,133,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextFillColorPrimaryBrush}" FontFamily="Segoe UI Variable Display" FontSize="15"/>
-            <Label Content="ISP or Organization" HorizontalAlignment="Left" Margin="0,157,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextFillColorPrimaryBrush}" FontFamily="Segoe UI Variable Display" FontSize="15"/>
-            <Label Content="ASN" HorizontalAlignment="Left" Margin="0,181,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextFillColorPrimaryBrush}" FontFamily="Segoe UI Variable Display" FontSize="15"/>
-            <Label Content="Mobile" HorizontalAlignment="Left" Margin="0,205,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextFillColorPrimaryBrush}" FontFamily="Segoe UI Variable Display" FontSize="15"/>
-            <Label Content="Proxy" HorizontalAlignment="Left" Margin="0,229,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextFillColorPrimaryBrush}" FontFamily="Segoe UI Variable Display" FontSize="15"/>
-            <Label Content="Hosting" HorizontalAlignment="Left" Margin="0,253,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextFillColorPrimaryBrush}" FontFamily="Segoe UI Variable Display" FontSize="15"/>
+        <StackPanel>
+            <Label Content="IP Address"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Margin="-6,0,0,0"
+                   Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                   FontSize="15"/>
+            <Label x:Name="IpAddress"
+                   Content="Unknown"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
+                   FontSize="25"
+                   Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+        </StackPanel>
 
-            <!-- Value Labels -->
-            <Label x:Name="valueCityCountry" Content="Unknown" HorizontalAlignment="Left" Margin="160,37,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontFamily="Segoe UI Variable Display" FontSize="15"/>
-            <Label x:Name="valuePostal" Content="Unknown" HorizontalAlignment="Left" Margin="160,61,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontFamily="Segoe UI Variable Display" FontSize="15"/>
-            <Label x:Name="valueTimezone" Content="Unknown" HorizontalAlignment="Left" Margin="160,85,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontFamily="Segoe UI Variable Display" FontSize="15"/>
-            <Label x:Name="valueLatitude" Content="Unknown" HorizontalAlignment="Left" Margin="160,109,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontFamily="Segoe UI Variable Display" FontSize="15"/>
-            <Label x:Name="valueLongitude" Content="Unknown" HorizontalAlignment="Left" Margin="160,133,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontFamily="Segoe UI Variable Display" FontSize="15"/>
-            <Label x:Name="valueISP" Content="Unknown" HorizontalAlignment="Left" Margin="160,157,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontFamily="Segoe UI Variable Display" FontSize="15"/>
-            <Label x:Name="valueASN" Content="Unknown" HorizontalAlignment="Left" Margin="160,181,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontFamily="Segoe UI Variable Display" FontSize="15"/>
-            <Label x:Name="valueMobile" Content="Unknown" HorizontalAlignment="Left" Margin="160,205,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontFamily="Segoe UI Variable Display" FontSize="15"/>
-            <Label x:Name="valueProxy" Content="Unknown" HorizontalAlignment="Left" Margin="160,229,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontFamily="Segoe UI Variable Display" FontSize="15"/>
-            <Label x:Name="valueHosting" Content="Unknown" HorizontalAlignment="Left" Margin="160,253,0,0" VerticalAlignment="Top" Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontFamily="Segoe UI Variable Display" FontSize="15"/>
-        </Grid>
-        <Label x:Name="errorLabel" Content="" HorizontalAlignment="Left" Margin="0,0,0,-485" VerticalAlignment="Bottom" Foreground="Red" FontFamily="Segoe UI Variable Display" FontSize="15"/>
-    </Grid>
+        <StackPanel Grid.Row="2">
+            <Label Content="Information" 
+                   HorizontalAlignment="Left" 
+                   VerticalAlignment="Top" 
+                   FontSize="24" 
+                   Foreground="{DynamicResource TextFillColorPrimaryBrush}" 
+                   Margin="-6,0,0,0"
+                   FontWeight="SemiBold"/>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="135"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock
+                    FontSize="14"
+                    Margin="0,6,0,0"
+                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                    Text="City / Country" />
+                <ui:TextBox x:Name="valueCityCountry" Grid.Column="1" Icon="City24" PlaceholderText="Unknown" IsEnabled="false" />
+            </Grid>
+
+            <Grid Margin="0,5,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="135"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock
+                    FontSize="14"
+                    Margin="0,6,0,0"
+                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                    Text="Postal" />
+                <ui:TextBox x:Name="valuePostal" Grid.Column="1" Icon="Mail24" PlaceholderText="Unknown" IsEnabled="false" />
+            </Grid>
+            <Grid Margin="0,5,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="135"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock
+                    FontSize="14"
+                    Margin="0,6,0,0"
+                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                    Text="Timezone" />
+                <ui:TextBox x:Name="valueTimezone" Grid.Column="1" Icon="Clock24" PlaceholderText="Unknown" IsEnabled="false" />
+            </Grid>
+            <Grid Margin="0,5,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="135"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock
+                    FontSize="14"
+                    Margin="0,6,0,0"
+                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                    Text="Latitude" />
+                <ui:TextBox x:Name="valueLatitude" Grid.Column="1" Icon="GlobeLocation24" PlaceholderText="Unknown" IsEnabled="false" />
+            </Grid>
+            <Grid Margin="0,5,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="135"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock
+                    FontSize="14"
+                    Margin="0,6,0,0"
+                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                    Text="Longitude" />
+                <ui:TextBox x:Name="valueLongitude" Grid.Column="1" Icon="GlobeLocation24" PlaceholderText="Unknown" IsEnabled="false" />
+            </Grid>
+            <Grid Margin="0,5,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="135"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock
+                    FontSize="14"
+                    Margin="0,6,0,0"
+                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                    Text="ISP or Organization" />
+                <ui:TextBox x:Name="valueISP" Grid.Column="1" Icon="Building24" PlaceholderText="Unknown" IsEnabled="false" />
+            </Grid>
+            <Grid Margin="0,5,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="135"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock
+                    FontSize="14"
+                    Margin="0,6,0,0"
+                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                    Text="ASN" />
+                <ui:TextBox x:Name="valueASN" Grid.Column="1" Icon="Router24" PlaceholderText="Unknown" IsEnabled="false" />
+            </Grid>
+            <Grid Margin="0,5,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="135"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock
+                    FontSize="14"
+                    Margin="0,6,0,0"
+                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                    Text="Is Mobile" />
+                <ui:TextBox x:Name="valueMobile" Grid.Column="1" Icon="Phone24" PlaceholderText="Unknown" IsEnabled="false" />
+            </Grid>
+            <Grid Margin="0,5,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="135"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock
+                    FontSize="14"
+                    Margin="0,6,0,0"
+                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                    Text="Is Proxy" />
+                <ui:TextBox x:Name="valueProxy" Grid.Column="1" Icon="Globe24" PlaceholderText="Unknown" IsEnabled="false" />
+            </Grid>
+            <Grid Margin="0,5,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="135"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock
+                    FontSize="14"
+                    Margin="0,6,0,0"
+                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                    Text="Is Hosting" />
+                <ui:TextBox x:Name="valueHosting" Grid.Column="1" Icon="Server24" PlaceholderText="Unknown" IsEnabled="false" />
+            </Grid>
+            <Button Margin="0,10,0,0"
+                    Content="Export information"
+                    Click="ExportBtn_OnClick"
+                    HorizontalAlignment="Stretch"/>
+        </StackPanel>
+        <Label x:Name="errorLabel" Content="" HorizontalAlignment="Left" Margin="0,0,0,-485" VerticalAlignment="Bottom" Foreground="Red" FontSize="15"/>
+    </StackPanel>
 </Page>
