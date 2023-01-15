@@ -1,45 +1,196 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net7.0-windows10.0.19041.0</TargetFramework>
-    <UseWPF>true</UseWPF>
-    <ApplicationIcon>CheckIP.ico</ApplicationIcon>
-    <Authors>valnoxy</Authors>
-    <Company>Exploitox</Company>
-    <Description>Get more information about an IP address.</Description>
-    <Copyright>Copyright © 2018 - 2023 Exploitox. All rights reserved.</Copyright>
-    <RepositoryUrl>https://github.com/valnoxy/checkip</RepositoryUrl>
-    <Version>2.2.0</Version>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net7.0-windows10.0.19041.0</TargetFramework>
+		<UseWPF>true</UseWPF>
+		<ApplicationIcon>CheckIP.ico</ApplicationIcon>
+		<Authors>valnoxy</Authors>
+		<Company>Exploitox</Company>
+		<Description>Get more information about an IP address.</Description>
+		<Copyright>Copyright © 2018 - 2023 Exploitox. All rights reserved.</Copyright>
+		<RepositoryUrl>https://github.com/valnoxy/checkip</RepositoryUrl>
+		<Version>2.2.0</Version>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="icon.png" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Remove="Assets\algeria-24.ico" />
+		<None Remove="Assets\andora-24.ico" />
+		<None Remove="Assets\angola-24.ico" />
+		<None Remove="Assets\antigua-and-barbuda-24.ico" />
+		<None Remove="Assets\argentina-24.ico" />
+		<None Remove="Assets\armenia-24.ico" />
+		<None Remove="Assets\australia-24.ico" />
+		<None Remove="Assets\austria-24.ico" />
+		<None Remove="Assets\azerbaijan-24.ico" />
+		<None Remove="Assets\bahamas-24.ico" />
+		<None Remove="Assets\bangladesh-24.ico" />
+		<None Remove="Assets\belarus-24.ico" />
+		<None Remove="Assets\belgium-24.ico" />
+		<None Remove="Assets\bolivia-24.ico" />
+		<None Remove="Assets\brazil-24.ico" />
+		<None Remove="Assets\cameroon-24.ico" />
+		<None Remove="Assets\canada-24.ico" />
+		<None Remove="Assets\chad-24.ico" />
+		<None Remove="Assets\chile-24.ico" />
+		<None Remove="Assets\china-24.ico" />
+		<None Remove="Assets\colombia-24.ico" />
+		<None Remove="Assets\congo-24.ico" />
+		<None Remove="Assets\croatia-24.ico" />
+		<None Remove="Assets\cuba-24.ico" />
+		<None Remove="Assets\cyprus-24.ico" />
+		<None Remove="Assets\czech-republic-24.ico" />
+		<None Remove="Assets\democratic-republic-congo-flag-circle-24.ico" />
+		<None Remove="Assets\denmark-24.ico" />
+		<None Remove="Assets\djibouti-24.ico" />
+		<None Remove="Assets\dominican-republic-24.ico" />
+		<None Remove="Assets\ecuador-24.ico" />
+		<None Remove="Assets\egypt-24.ico" />
+		<None Remove="Assets\england-circular-24.ico" />
+		<None Remove="Assets\falkland-islands-circular-24.ico" />
+		<None Remove="Assets\finland-24.ico" />
+		<None Remove="Assets\france-24.ico" />
+		<None Remove="Assets\germany-24.ico" />
+		<None Remove="Assets\great-britain-24.ico" />
+		<None Remove="Assets\greece-24.ico" />
+		<None Remove="Assets\guyana-24.ico" />
+		<None Remove="Assets\hongkong-24.ico" />
+		<None Remove="Assets\iceland-24.ico" />
+		<None Remove="Assets\india-24.ico" />
+		<None Remove="Assets\iran-24.ico" />
+		<None Remove="Assets\ireland-24.ico" />
+		<None Remove="Assets\israel-24.ico" />
+		<None Remove="Assets\italy-24.ico" />
+		<None Remove="Assets\jamaica-24.ico" />
+		<None Remove="Assets\japan-24.ico" />
+		<None Remove="Assets\mexico-24.ico" />
+		<None Remove="Assets\netherlands-24.ico" />
+		<None Remove="Assets\new-zealand-24.ico" />
+		<None Remove="Assets\north-korea-24.ico" />
+		<None Remove="Assets\northern-ireland-circular-24.ico" />
+		<None Remove="Assets\norway-24.ico" />
+		<None Remove="Assets\paraguay-circular-24.ico" />
+		<None Remove="Assets\peru-24.ico" />
+		<None Remove="Assets\poland-24.ico" />
+		<None Remove="Assets\portugal-24.ico" />
+		<None Remove="Assets\russian-federation-24.ico" />
+		<None Remove="Assets\scotland-circular-24.ico" />
+		<None Remove="Assets\south-africa-24.ico" />
+		<None Remove="Assets\south-korea-24.ico" />
+		<None Remove="Assets\spain-24.ico" />
+		<None Remove="Assets\suriname-circular-24.ico" />
+		<None Remove="Assets\sweden-24.ico" />
+		<None Remove="Assets\switzerland-24.ico" />
+		<None Remove="Assets\thailand-24.ico" />
+		<None Remove="Assets\turkey-24.ico" />
+		<None Remove="Assets\ukraine-24.ico" />
+		<None Remove="Assets\united-arab-emirates-24.ico" />
+		<None Remove="Assets\uruguay-24.ico" />
+		<None Remove="Assets\usa-24.ico" />
+		<None Remove="Assets\venezuela-24.ico" />
+		<None Remove="Assets\wales-circular-24.ico" />
+		<None Remove="icon.png" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Page Remove="Pages\App.xaml" />
-    <Page Remove="W11App.xaml" />
-  </ItemGroup>
+	<ItemGroup>
+		<Page Remove="Pages\App.xaml" />
+		<Page Remove="W11App.xaml" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ApplicationDefinition Include="Pages\App.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <Generator>MSBuild:Compile</Generator>
-    </ApplicationDefinition>
-  </ItemGroup>
+	<ItemGroup>
+		<ApplicationDefinition Include="Pages\App.xaml">
+			<XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+			<Generator>MSBuild:Compile</Generator>
+		</ApplicationDefinition>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Content Include="CheckIP.ico" />
-  </ItemGroup>
+	<ItemGroup>
+		<Resource Include="CheckIP.ico" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
-    <PackageReference Include="WPF-UI" Version="2.0.3" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="1.1.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+		<PackageReference Include="WPF-UI" Version="2.0.3" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Resource Include="icon.png" />
-  </ItemGroup>
+	<ItemGroup>
+		<Resource Include="Assets\algeria-24.ico" />
+		<Resource Include="Assets\andora-24.ico" />
+		<Resource Include="Assets\angola-24.ico" />
+		<Resource Include="Assets\antigua-and-barbuda-24.ico" />
+		<Resource Include="Assets\argentina-24.ico" />
+		<Resource Include="Assets\armenia-24.ico" />
+		<Resource Include="Assets\australia-24.ico" />
+		<Resource Include="Assets\austria-24.ico" />
+		<Resource Include="Assets\azerbaijan-24.ico" />
+		<Resource Include="Assets\bahamas-24.ico" />
+		<Resource Include="Assets\bangladesh-24.ico" />
+		<Resource Include="Assets\belarus-24.ico" />
+		<Resource Include="Assets\belgium-24.ico" />
+		<Resource Include="Assets\bolivia-24.ico" />
+		<Resource Include="Assets\brazil-24.ico" />
+		<Resource Include="Assets\cameroon-24.ico" />
+		<Resource Include="Assets\canada-24.ico" />
+		<Resource Include="Assets\chad-24.ico" />
+		<Resource Include="Assets\chile-24.ico" />
+		<Resource Include="Assets\china-24.ico" />
+		<Resource Include="Assets\colombia-24.ico" />
+		<Resource Include="Assets\congo-24.ico" />
+		<Resource Include="Assets\croatia-24.ico" />
+		<Resource Include="Assets\cuba-24.ico" />
+		<Resource Include="Assets\cyprus-24.ico" />
+		<Resource Include="Assets\czech-republic-24.ico" />
+		<Resource Include="Assets\democratic-republic-congo-flag-circle-24.ico" />
+		<Resource Include="Assets\denmark-24.ico" />
+		<Resource Include="Assets\djibouti-24.ico" />
+		<Resource Include="Assets\dominican-republic-24.ico" />
+		<Resource Include="Assets\ecuador-24.ico" />
+		<Resource Include="Assets\egypt-24.ico" />
+		<Resource Include="Assets\england-circular-24.ico" />
+		<Resource Include="Assets\falkland-islands-circular-24.ico" />
+		<Resource Include="Assets\finland-24.ico" />
+		<Resource Include="Assets\france-24.ico" />
+		<Resource Include="Assets\germany-24.ico" />
+		<Resource Include="Assets\great-britain-24.ico" />
+		<Resource Include="Assets\greece-24.ico" />
+		<Resource Include="Assets\guyana-24.ico" />
+		<Resource Include="Assets\hongkong-24.ico" />
+		<Resource Include="Assets\iceland-24.ico" />
+		<Resource Include="Assets\india-24.ico" />
+		<Resource Include="Assets\iran-24.ico" />
+		<Resource Include="Assets\ireland-24.ico" />
+		<Resource Include="Assets\israel-24.ico" />
+		<Resource Include="Assets\italy-24.ico" />
+		<Resource Include="Assets\jamaica-24.ico" />
+		<Resource Include="Assets\japan-24.ico" />
+		<Resource Include="Assets\mexico-24.ico" />
+		<Resource Include="Assets\netherlands-24.ico" />
+		<Resource Include="Assets\new-zealand-24.ico" />
+		<Resource Include="Assets\north-korea-24.ico" />
+		<Resource Include="Assets\northern-ireland-circular-24.ico" />
+		<Resource Include="Assets\norway-24.ico" />
+		<Resource Include="Assets\paraguay-circular-24.ico" />
+		<Resource Include="Assets\peru-24.ico" />
+		<Resource Include="Assets\poland-24.ico" />
+		<Resource Include="Assets\portugal-24.ico" />
+		<Resource Include="Assets\russian-federation-24.ico" />
+		<Resource Include="Assets\scotland-circular-24.ico" />
+		<Resource Include="Assets\south-africa-24.ico" />
+		<Resource Include="Assets\south-korea-24.ico" />
+		<Resource Include="Assets\spain-24.ico" />
+		<Resource Include="Assets\suriname-circular-24.ico" />
+		<Resource Include="Assets\sweden-24.ico" />
+		<Resource Include="Assets\switzerland-24.ico" />
+		<Resource Include="Assets\thailand-24.ico" />
+		<Resource Include="Assets\turkey-24.ico" />
+		<Resource Include="Assets\ukraine-24.ico" />
+		<Resource Include="Assets\united-arab-emirates-24.ico" />
+		<Resource Include="Assets\uruguay-24.ico" />
+		<Resource Include="Assets\usa-24.ico" />
+		<Resource Include="Assets\venezuela-24.ico" />
+		<Resource Include="Assets\wales-circular-24.ico" />
+		<Resource Include="icon.png" />
+	</ItemGroup>
 
 </Project>

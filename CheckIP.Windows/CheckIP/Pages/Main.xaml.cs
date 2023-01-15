@@ -1,6 +1,10 @@
 ﻿using System;
-using System.Collections.ObjectModel;
+using System.Drawing;
+using System.IO;
 using System.Windows;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using Hardcodet.Wpf.TaskbarNotification;
 
 namespace CheckIP
 {
@@ -9,6 +13,8 @@ namespace CheckIP
     /// </summary>
     public partial class Main : Wpf.Ui.Controls.UiWindow
     {
+        public static Main? ContentMain;
+
         public Main()
         {
             InitializeComponent();
@@ -30,6 +36,16 @@ namespace CheckIP
         private void RootNavigation_OnLoaded(object sender, RoutedEventArgs e)
         {
             RootNavigation.Navigate("dashboard");
+
+            var tbIcon = new TaskbarIcon();
+            Common.TrayIcon.TaskbarIcon = tbIcon;
+            tbIcon.IconSource = new BitmapImage(new Uri("pack://application:,,,/CheckIP.ico"));
+            tbIcon.ToolTipText = "CheckIP";
+        }
+
+        private void CloseMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

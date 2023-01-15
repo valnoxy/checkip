@@ -6,6 +6,7 @@
         MinHeight="669" MinWidth="512"
         xmlns:pages="clr-namespace:CheckIP"
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        xmlns:tb="http://www.hardcodet.net/taskbar"
         WindowStartupLocation="CenterScreen"
         Style="{StaticResource UiWindow}"
         ExtendsContentIntoTitleBar="True"
@@ -75,6 +76,10 @@
                Margin="0,12,40,0"
                Foreground="Red"
                FontSize="13"/>
-        <ui:TitleBar Grid.Row="0" ShowMaximize="False" ShowMinimize="False" Title="CheckIP" Icon="pack://application:,,,/icon.png"/>
+        <ui:TitleBar Grid.Row="0" 
+                     ShowMaximize="False" 
+                     ShowMinimize="False" 
+                     Title="CheckIP" 
+                     Icon="pack://application:,,,/icon.png"/>
     </Grid>
 </ui:UiWindow>

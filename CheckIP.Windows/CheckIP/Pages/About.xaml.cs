@@ -14,7 +14,6 @@ namespace CheckIP
         {
             InitializeComponent();
 
-
             var versionInfo = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location);
             ValueVersion.Content = $"{versionInfo.ProductName} V. {versionInfo.ProductVersion}";
             ValueCopyright.Content = versionInfo.LegalCopyright;

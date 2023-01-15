@@ -98,10 +98,10 @@
                             Text="• WPFUI by Lepoco"
                             TextWrapping="Wrap" />
                         <TextBlock
-                            Text="• FluentWPF by sourcechord"
+                            Text="• Hardcodet.NotifyIcon.Wpf by Hardcodet"
                             TextWrapping="Wrap" />
                         <TextBlock
-                            Text="• MicaWPF by Simnico99"
+                            Text="• Flag Icons by Icons8"
                             TextWrapping="Wrap" />
                         <TextBlock
                             Text="• Newtonsoft.Json by James Newton-King"
