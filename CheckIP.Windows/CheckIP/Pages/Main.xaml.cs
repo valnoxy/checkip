@@ -4,6 +4,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using CheckIP.Common;
 using Hardcodet.Wpf.TaskbarNotification;
 
 namespace CheckIP
@@ -37,10 +38,7 @@ namespace CheckIP
         {
             RootNavigation.Navigate("dashboard");
 
-            var tbIcon = new TaskbarIcon();
-            Common.TrayIcon.TaskbarIcon = tbIcon;
-            tbIcon.IconSource = new BitmapImage(new Uri("pack://application:,,,/CheckIP.ico"));
-            tbIcon.ToolTipText = "CheckIP";
+            TaskBar.Initialize();
         }
 
         private void CloseMenuItem_Click(object sender, RoutedEventArgs e)

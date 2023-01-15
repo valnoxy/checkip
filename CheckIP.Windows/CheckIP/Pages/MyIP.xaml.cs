@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using System.Windows.Threading;
+using CheckIP.Common;
 
 namespace CheckIP
 {
@@ -124,6 +126,9 @@ namespace CheckIP
                 valueProxy.Text = proxy;
                 valueHosting.Text = hosting;
             });
+
+            // Update NotifyIcon
+            Dispatcher.Invoke(() => TaskBar.Update(country, city, ip));
         }
         
         private void ExportBtn_OnClick(object sender, RoutedEventArgs e)
