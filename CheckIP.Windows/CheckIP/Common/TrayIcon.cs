@@ -18,20 +18,21 @@ namespace CheckIP.Common
         public static void Initialize()
         {
             TbIcon = new TaskbarIcon();
-            TbIcon.IconSource = new BitmapImage(new Uri("pack://application:,,,/CheckIP.ico"));
+            TbIcon.IconSource = new BitmapImage(new Uri("pack://application:,,,/Assets/CheckIP.ico"));
             TbIcon.ToolTipText = "CheckIP";
         }
 
-        public static void Update(string country, string city, IPAddress ip)
+        public static void Update(string country, string city, IPAddress ip, string countryCode)
         {
             if (country == null) throw new ArgumentNullException(nameof(country));
             if (city == null) throw new ArgumentNullException(nameof(city));
             if (ip == null) throw new ArgumentNullException(nameof(ip));
+            if (countryCode == null) throw new ArgumentNullException(nameof(countryCode));
 
             try
             {
                 TbIcon.IconSource =
-                    new BitmapImage(new Uri($"pack://application:,,,/Assets/{country.ToLower()}-24.ico"));
+                    new BitmapImage(new Uri($"pack://application:,,,/Assets/{countryCode.ToLower()}.ico"));
                 TbIcon.ToolTipText = $"{country} - {city} ({ip})";
             }
             catch (Exception ex)

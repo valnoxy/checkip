@@ -12,6 +12,7 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using CheckIP.Common;
+using System.Net.NetworkInformation;
 
 namespace CheckIP
 {
@@ -22,20 +23,38 @@ namespace CheckIP
     {
         private static string _myIp;
 
-        [Obsolete("Obsolete")]
         public MyIP()
         {
             InitializeComponent();
 
             _myIp = Task.Run(_GetIPAddress).GetAwaiter().GetResult();
             Task.Run(ParseIpAddress);
+
+            // Trigger NetworkChange
+            NetworkChange.NetworkAddressChanged +=
+                new NetworkAddressChangedEventHandler(NetworkChange_NetworkAvailabilityChanged);
         }
 
-        [Obsolete("Obsolete")]
+        [Obsolete("Will be replaced to a async version soon.")]
         private static async Task<string> _GetIPAddress()
         {
-            var result = await Task.Run(() => new WebClient().DownloadString("https://ifconfig.me/ip"));
-            
+            string result = null;
+            try
+            {
+                result = await Task.Run(() => new WebClient().DownloadString("https://ifconfig.me/ip"));
+            }
+            catch
+            {
+                try
+                {
+                    result = await Task.Run(() => new WebClient().DownloadString("https://api.ipify.org"));
+                }
+                catch
+                {
+                    
+                }
+            }
+
             return result;
         }
 
@@ -47,14 +66,14 @@ namespace CheckIP
             {
                 Dispatcher.Invoke(() =>
                 {
-                    errorLabel.Content = "Error: This is not a valid IP address";
+                    ErrorLabel.Content = "Error: This is not a valid IP address";
                 });
                 return;
             }
 
             Dispatcher.Invoke(() =>
             {
-                errorLabel.Content = string.Empty;
+                ErrorLabel.Content = string.Empty;
             });
 
             var dataJson = string.Empty;
@@ -70,7 +89,7 @@ namespace CheckIP
             {
                 this.Dispatcher.Invoke(() =>
                 {
-                    errorLabel.Content = "Error: No connection to server";
+                    ErrorLabel.Content = "Error: No connection to server";
                 });
             }
             dynamic data = JObject.Parse(dataJson);
@@ -96,7 +115,7 @@ namespace CheckIP
             {
                 this.Dispatcher.Invoke(() =>
                 {
-                    errorLabel.Content = "Error: " + message;
+                    ErrorLabel.Content = "Error: " + message;
                     valueCityCountry.Text = "Unknown";
                     valuePostal.Text = "Unknown";
                     valueTimezone.Text = "Unknown";
@@ -128,7 +147,7 @@ namespace CheckIP
             });
 
             // Update NotifyIcon
-            Dispatcher.Invoke(() => TaskBar.Update(country, city, ip));
+            Dispatcher.Invoke(() => TaskBar.Update(country, city, ip, countryCode));
         }
         
         private void ExportBtn_OnClick(object sender, RoutedEventArgs e)
@@ -155,6 +174,12 @@ Is Hosting: {valueHosting.Text}
             };
             if (saveFileDialog.ShowDialog() == true)
                 File.WriteAllText(saveFileDialog.FileName, exportString);
+        }
+
+        private void NetworkChange_NetworkAvailabilityChanged(object sender, EventArgs e)
+        {
+            _myIp = Task.Run(_GetIPAddress).GetAwaiter().GetResult();
+            Task.Run(ParseIpAddress);
         }
     }
 }

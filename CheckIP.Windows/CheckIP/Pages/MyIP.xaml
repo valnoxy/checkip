@@ -12,12 +12,11 @@
     <StackPanel Margin="20,55,18,0">
 
         <StackPanel>
-            <Label Content="IP Address"
-                   HorizontalAlignment="Left"
+            <Label HorizontalAlignment="Right"
+                   x:Name="ErrorLabel"
+                   Foreground="Red"
                    VerticalAlignment="Top"
-                   Margin="-6,0,0,0"
-                   Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-                   FontSize="15"/>
+                   Margin="-6,0,0,0"/>
             <Label x:Name="IpAddress"
                    Content="Unknown"
                    HorizontalAlignment="Center"
@@ -171,6 +170,5 @@
                     Click="ExportBtn_OnClick"
                     HorizontalAlignment="Stretch"/>
         </StackPanel>
-        <Label x:Name="errorLabel" Content="" HorizontalAlignment="Left" Margin="0,0,0,-485" VerticalAlignment="Bottom" Foreground="Red" FontSize="15"/>
     </StackPanel>
 </Page>
