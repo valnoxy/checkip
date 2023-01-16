@@ -25,9 +25,7 @@
 CheckIP is a GUI based application which can provide much information about an IP address.
 
 ## Screenshots
-![CheckIP - Fetch Data](https://dl.exploitox.de/checkip/CheckIP_FetchData.png) ![CheckIP - My IP](https://dl.exploitox.de/checkip/CheckIP_MyIP.png)
-
-> Note: These screenshots are from Version 1.0 (WPF). The screenshots will be updated later.
+<img src="https://dl.exploitox.de/checkip/v2.2.0/CheckIP_FetchIP.png" width="350"> <img src="https://dl.exploitox.de/checkip/v2.2.0/CheckIP_MyIP.png" width="350">
 
 ## Download
 [![GooglePlay](https://dl.exploitox.de/checkip/PlayStoreBadge.png)](https://play.google.com/store/apps/details?id=dev.valnoxy.checkip)
