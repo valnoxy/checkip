@@ -1,15 +1,21 @@
 ﻿using System;
-using System.Collections.ObjectModel;
+using System.Drawing;
+using System.IO;
+using System.Net.NetworkInformation;
 using System.Windows;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using CheckIP.Common;
+using Hardcodet.Wpf.TaskbarNotification;
 
 namespace CheckIP
 {
     /// <summary>
     /// Interaktionslogik für Main.xaml
     /// </summary>
-    public partial class Main : Window
+    public partial class Main : Wpf.Ui.Controls.UiWindow
     {
-        public ObservableCollection<string> ThirdPartyList { get; set; }
+        public static Main? ContentMain;
 
         public Main()
         {
@@ -17,35 +23,28 @@ namespace CheckIP
 
             Loaded += (sender, args) =>
             {
-                WPFUI.Appearance.Watcher.Watch(
+                Wpf.Ui.Appearance.Watcher.Watch(
                   this,                                 // Window class
-                  WPFUI.Appearance.BackgroundType.Mica, // Background type
+                  Wpf.Ui.Appearance.BackgroundType.Mica, // Background type
                   true                                  // Whether to change accents automatically
                 );
             };
 
-            ThirdPartyList = new ObservableCollection<string>()
-            {
-                "Somewhere over the rainbow",
-                "Way up high",
-                "And the dreams that you dream of",
-                "Once in a lullaby, oh"
-            };
-
 #if DEBUG
-            debugLabel.Content = "Debug Build";
+            debugLabel.Content = "Debug build - This is not a production ready build.";
 #endif
         }
 
         private void RootNavigation_OnLoaded(object sender, RoutedEventArgs e)
         {
             RootNavigation.Navigate("dashboard");
+
+            TaskBar.Initialize();
         }
 
-        private void buttonOK_Click(object sender, RoutedEventArgs e)
+        private void CloseMenuItem_Click(object sender, RoutedEventArgs e)
         {
             Environment.Exit(0);
         }
-        
     }
 }
