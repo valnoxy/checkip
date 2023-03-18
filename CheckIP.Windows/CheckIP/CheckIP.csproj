@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
@@ -286,6 +286,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Page Remove="Localization\ResourceDictionary.de-DE.xaml" />
 		<Page Remove="Localization\ResourceDictionary.xaml" />
 		<Page Remove="Pages\App.xaml" />
 		<Page Remove="W11App.xaml" />
@@ -577,6 +578,10 @@
 		<Resource Include="Assets\zm.ico" />
 		<Resource Include="Assets\zw.ico" />
 		<Resource Include="icon.png" />
+		<Resource Include="Localization\ResourceDictionary.de-DE.xaml">
+		  <SubType>Component</SubType>
+		  <Generator>MSBuild:Compile</Generator>
+		</Resource>
 		<Resource Include="Localization\ResourceDictionary.xaml">
 		  <Generator>MSBuild:Compile</Generator>
 		</Resource>

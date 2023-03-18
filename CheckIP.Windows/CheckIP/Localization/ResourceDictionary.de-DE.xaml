@@ -1,0 +1,36 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <system:String x:Key="IPAddress">IP Adresse</system:String>
+    <system:String x:Key="Fetch">Abrufen</system:String>
+    <system:String x:Key="Information">Information</system:String>
+    <system:String x:Key="CityAndCountry">Stadt / Land</system:String>
+    <system:String x:Key="Postal">Postleitzahl</system:String>
+    <system:String x:Key="Timezone">Zeitzone</system:String>
+    <system:String x:Key="Latitude">Breitengrad</system:String>
+    <system:String x:Key="Longitude">Längengrad</system:String>
+    <system:String x:Key="ISPOrOrganization">ISP oder Firma</system:String>
+    <system:String x:Key="ASN">ASN</system:String>
+    <system:String x:Key="IsMobile">Mobiles Gerät</system:String>
+    <system:String x:Key="IsProxy">Proxy Server</system:String>
+    <system:String x:Key="IsHosting">Hosting</system:String>
+    <system:String x:Key="ExportInfo">Informationen exportieren</system:String>
+    <system:String x:Key="Unknown">Unbekannt</system:String>
+    <system:String x:Key="MyIP">Meine IP</system:String>
+
+    <!-- About -->
+    <system:String x:Key="About">Über</system:String>
+    <system:String x:Key="AboutThisApp">Über diese App</system:String>
+    <system:String x:Key="License">Dieses Programm ist freie Software: Sie können es unter den Bedingungen der GNU General Public License, wie sie von der Free Software Foundation veröffentlicht wurde, weitergeben und/oder modifizieren, entweder gemäß Version 3 der Lizenz oder (nach Ihrer Wahl) jeder späteren Version.</system:String>
+    <system:String x:Key="ThirdPartyLibraries">Drittanbieter Bibliotheken</system:String>
+    <system:String x:Key="ThirdPartyLibrariesDescription">Liste aller verwendeten Bibliotheken und Bilder.</system:String>
+    <system:String x:Key="SourceCodeBtn">Quellcode auf GitHub</system:String>
+    <system:String x:Key="HomepageBtn">Homepage</system:String>
+    <system:String x:Key="LicenseBtn">Lizenz</system:String>
+
+    <!-- Error's -->
+    <system:String x:Key="ErrorReservedRange">Fehler: Reservierter Bereich</system:String>
+    <system:String x:Key="ErrorInvalidIP">Fehler: Dies ist keine gültige IP Adresse</system:String>
+    <system:String x:Key="ErrorNoConnection">Fehler: Keine Verbindung zum Server</system:String>
+    <system:String x:Key="ErrorInvalidQuery">Fehler: Ungültige Abfrage</system:String>
+</ResourceDictionary>
