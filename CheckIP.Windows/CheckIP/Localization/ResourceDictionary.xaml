@@ -1,0 +1,39 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <system:String x:Key="IPAddress">IP Address</system:String>
+    <system:String x:Key="Fetch">Fetch</system:String>
+    <system:String x:Key="Information">Information</system:String>
+    <system:String x:Key="CityAndCountry">City / Country</system:String>
+    <system:String x:Key="Postal">Postal</system:String>
+    <system:String x:Key="Timezone">Timezone</system:String>
+    <system:String x:Key="Latitude">Latitude</system:String>
+    <system:String x:Key="Longitude">Longitude</system:String>
+    <system:String x:Key="ISPOrOrganization">ISP or Organization</system:String>
+    <system:String x:Key="ASN">ASN</system:String>
+    <system:String x:Key="IsMobile">Is Mobile</system:String>
+    <system:String x:Key="IsProxy">Is Proxy</system:String>
+    <system:String x:Key="IsHosting">Is Hosting</system:String>
+    <system:String x:Key="ExportInfo">Export Information</system:String>
+    <system:String x:Key="Unknown">Unknown</system:String>
+    <system:String x:Key="MyIP">My IP</system:String>
+
+    <!-- About -->
+    <system:String x:Key="About">About</system:String>
+    <system:String x:Key="AboutThisApp">About this App</system:String>
+    <system:String x:Key="License">This program is free software: you can redistribute it and/or modify
+        it under the terms of the GNU General Public License as published by
+        the Free Software Foundation, either version 3 of the License, or
+        (at your option) any later version.</system:String>
+    <system:String x:Key="ThirdPartyLibraries">Third Party Libraries</system:String>
+    <system:String x:Key="ThirdPartyLibrariesDescription">List of all used open-source libraries and images.</system:String>
+    <system:String x:Key="SourceCodeBtn">Source Code on GitHub</system:String>
+    <system:String x:Key="HomepageBtn">Homepage</system:String>
+    <system:String x:Key="LicenseBtn">License</system:String>
+
+    <!-- Error's -->
+    <system:String x:Key="ErrorReservedRange">Error: Reserved range</system:String>
+    <system:String x:Key="ErrorInvalidIP">Error: This is not a valid IP address</system:String>
+    <system:String x:Key="ErrorNoConnection">Error: No connection to server</system:String>
+    <system:String x:Key="ErrorInvalidQuery">Error: Invalid query</system:String>
+</ResourceDictionary>

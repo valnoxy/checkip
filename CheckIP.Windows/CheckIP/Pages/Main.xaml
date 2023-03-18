@@ -6,7 +6,6 @@
         MinHeight="669" MinWidth="512"
         xmlns:pages="clr-namespace:CheckIP"
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-        xmlns:tb="http://www.hardcodet.net/taskbar"
         WindowStartupLocation="CenterScreen"
         Style="{StaticResource UiWindow}"
         ExtendsContentIntoTitleBar="True"
@@ -33,19 +32,19 @@
                 Loaded="RootNavigation_OnLoaded">
                 <ui:NavigationStore.Items>
                     <ui:NavigationItem
-                        Content="Fetch"
+                        Content="{DynamicResource Fetch}"
                         Icon="Search24"
                         PageTag="dashboard"
                         PageType="{x:Type pages:FetchIP}" />
                     <ui:NavigationItem
-                        Content="My IP"
+                        Content="{DynamicResource MyIP}"
                         Icon="MyLocation24"
                         PageTag="forms"
                         PageType="{x:Type pages:MyIP}" />
                 </ui:NavigationStore.Items>
                 <ui:NavigationStore.Footer>
                     <ui:NavigationItem
-                        Content="About"
+                        Content="{DynamicResource About}"
                         Icon="QuestionCircle24"
                         PageTag="help"
                         PageType="{x:Type pages:About}" />
@@ -68,7 +67,7 @@
             </Border>
         </Grid>
 
-        <Label x:Name="debugLabel" 
+        <Label x:Name="DebugLabel"
                Grid.Row="0" 
                Content=""
                HorizontalContentAlignment="Right"

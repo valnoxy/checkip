@@ -38,7 +38,7 @@
 
         <StackPanel>
             <Label x:Name="LabelTitle"
-                   Content="About this App" 
+                   Content="{DynamicResource AboutThisApp}" 
                    FontSize="15" 
                    Margin="-6,0,0,0"
                    Foreground="{DynamicResource TextFillColorPrimaryBrush}" 
@@ -60,17 +60,12 @@
                    VerticalAlignment="Top" 
                    HorizontalAlignment="Left"/>
 
-            <TextBlock x:Name="LicenseText" VerticalAlignment="Top" Foreground="{DynamicResource TextFillColorPrimaryBrush}" FontSize="15" TextWrapping="WrapWithOverflow" Height="100">
-                This program is free software: you can redistribute it and/or modify
-                it under the terms of the GNU General Public License as published by
-                the Free Software Foundation, either version 3 of the License, or
-                (at your option) any later version.
-            </TextBlock>
+            <TextBlock x:Name="LicenseText" VerticalAlignment="Top" Foreground="{DynamicResource TextFillColorPrimaryBrush}" FontSize="15" TextWrapping="WrapWithOverflow" Text="{DynamicResource License}"/>
 
         </StackPanel>
 
 
-        <Grid Grid.Row="3" Margin="0,0,0,12">
+        <Grid Margin="0,12,0,12">
             <StackPanel>
                 <ui:CardExpander
                     Margin="0,0,0,10"
@@ -85,11 +80,11 @@
                                 <TextBlock
                                     FontSize="13"
                                     FontWeight="Medium"
-                                    Text="Third Party Libraries" />
+                                    Text="{DynamicResource ThirdPartyLibraries}" />
                                 <TextBlock
                                     FontSize="12"
                                     Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                                    Text="List of all used open-source libraries." />
+                                    Text="{DynamicResource ThirdPartyLibrariesDescription}" />
                             </StackPanel>
                         </Grid>
                     </ui:CardExpander.Header>
@@ -109,19 +104,19 @@
                     </StackPanel>
                 </ui:CardExpander>
                 <ui:Hyperlink
-                    Content="Source Code on GitHub"
+                    Content="{DynamicResource SourceCodeBtn}"
                     Icon="Link48"
                     NavigateUri="https://github.com/valnoxy/checkip" 
                     FontSize="15" />
                 <ui:Hyperlink
-                    Content="Homepage"
+                    Content="{DynamicResource HomepageBtn}"
                     Icon="Link48"
                     NavigateUri="https://exploitox.de" 
                     FontSize="15" />
                 <ui:Hyperlink
-                    Content="GNU General Public License"
+                    Content="{DynamicResource LicenseBtn}"
                     Icon="Link48"
-                    NavigateUri="https://exploitox.de/license/checkip" 
+                    NavigateUri="https://github.com/valnoxy/checkip/blob/main/LICENSE" 
                     FontSize="15" />
             </StackPanel>
         </Grid>

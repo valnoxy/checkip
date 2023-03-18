@@ -1,6 +1,6 @@
 # CheckIP - IP Informations
 
-<img align="right" src="https://dl.exploitox.de/checkip/checkip.png" alt="macOS Monterey running on the T440p" width="150">
+<img align="right" src="https://dl.exploitox.de/checkip/checkip.png" alt="CheckIP Logo" width="150">
 
 [![Android](https://img.shields.io/badge/Android-Xamarin-brightgreen.svg)](https://github.com/valnoxy/checkip/tree/main/CheckIP.Mobile)
 [![iOS](https://img.shields.io/badge/iOS-Xamarin-green)](https://github.com/valnoxy/checkip/tree/main/CheckIP.Mobile)
@@ -10,7 +10,7 @@
 <p align="center">
    <strong>Status: </strong>Maintained
    <br />
-   <strong>WPF Version: </strong>2.2.0
+   <strong>WPF Version: </strong>2.2.1
    <br />
    <strong>Xamarin Version: </strong>2.1.0-alpha2
    <br />
@@ -34,9 +34,35 @@ CheckIP is a GUI based application which can provide much information about an I
 [![AppStore](https://dl.exploitox.de/checkip/AppStoreBadge.png)](https://apps.apple.com/us/app/checkip-ip-informations/id1618841457)
 [![MicrosoftStore](https://dl.exploitox.de/checkip/MicrosoftStoreBadge.png)](https://www.microsoft.com/store/apps/9NFGS0SX9CP3)
 
-<a href="https://testflight.apple.com/join/auUvXWJJ">Join iOS Beta via TestFlight »</a>
+<a href="https://testflight.apple.com/join/auUvXWJJ">Join iOS Beta via TestFlight (currently closed) »</a>
 
 > Note: The mobile applications are currently in beta. The MAUI source base is outdated and and exists only for archival purposes. After MAUI is more stable, this project will move from Xamarin to MAUI.
+
+## Localization
+Want to add a new language or revise an existing one? Great! Follow these steps so you can translate CheckIP:
+
+1. Clone this Repository
+2. Copy ```Localization\ResourceDirectory.xaml``` and paste your country code into the new file name (e.g. ```ResourceDirectory.de-DE.xaml```).
+3. Open ```Pages\App.xaml``` and add a reference to the new file under ```MergedDictionaries```.
+   
+   ```<ResourceDictionary Source="/CheckIP;component/Localization/ResourceDictionary.de-DE.xaml"/>``` 
+
+4. Open ```Pages\Main.xaml.cs```, go to the function ```Main``` and add your country code in the switch/case function with reference to the new file.
+   ```c#
+    switch (language)
+    {
+      default:
+      case "en-US":
+          dict.Source = new Uri(@"/CheckIP;component/Localization/ResourceDictionary.xaml", UriKind.Relative);
+          break;
+      case "de-DE":
+          dict.Source = new Uri(@"/CheckIP;component/Localization/ResourceDictionary.de-DE.xaml", UriKind.Relative);
+          break;
+    }
+   ```
+
+5. Modify your new file as you wish by translating the value of each variable.
+6. When you are ready, you can open a pull request.
 
 ## License (GNU GPL)
 This program is free software: you can redistribute it and/or modify

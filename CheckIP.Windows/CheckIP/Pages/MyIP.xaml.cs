@@ -31,8 +31,7 @@ namespace CheckIP
             Task.Run(ParseIpAddress);
 
             // Trigger NetworkChange
-            NetworkChange.NetworkAddressChanged +=
-                new NetworkAddressChangedEventHandler(NetworkChange_NetworkAvailabilityChanged);
+            NetworkChange.NetworkAddressChanged += NetworkChange_NetworkAvailabilityChanged;
         }
 
         [Obsolete("Will be replaced to a async version soon.")]
@@ -45,13 +44,13 @@ namespace CheckIP
             }
             catch
             {
-                try
+                try // Alternative source
                 {
                     result = await Task.Run(() => new WebClient().DownloadString("https://api.ipify.org"));
                 }
                 catch
                 {
-                    
+                    // ignored
                 }
             }
 
@@ -66,7 +65,8 @@ namespace CheckIP
             {
                 Dispatcher.Invoke(() =>
                 {
-                    ErrorLabel.Content = "Error: This is not a valid IP address";
+                    var error = (string)Application.Current.MainWindow.FindResource("ErrorInvalidIP");
+                    ErrorLabel.Content = !string.IsNullOrEmpty(error) ? error : "Error: This is not a valid IP address.";
                 });
                 return;
             }
@@ -89,7 +89,8 @@ namespace CheckIP
             {
                 this.Dispatcher.Invoke(() =>
                 {
-                    ErrorLabel.Content = "Error: No connection to server";
+                    var error = (string)Application.Current.MainWindow.FindResource("ErrorInvalidIP");
+                    ErrorLabel.Content = !string.IsNullOrEmpty(error) ? error : "Error: No connection to server";
                 });
             }
             dynamic data = JObject.Parse(dataJson);
@@ -113,19 +114,21 @@ namespace CheckIP
             // Check status
             if (status != "success")
             {
+                var localizeError = Common.LocalizationManager.LocalizeError(message);
+
                 this.Dispatcher.Invoke(() =>
                 {
-                    ErrorLabel.Content = "Error: " + message;
-                    valueCityCountry.Text = "Unknown";
-                    valuePostal.Text = "Unknown";
-                    valueTimezone.Text = "Unknown";
-                    valueLatitude.Text = "Unknown";
-                    valueLongitude.Text = "Unknown";
-                    valueISP.Text = "Unknown";
-                    valueASN.Text = "Unknown";
-                    valueMobile.Text = "Unknown";
-                    valueProxy.Text = "Unknown";
-                    valueHosting.Text = "Unknown";
+                    ErrorLabel.Content = localizeError;
+                    ValueCityCountry.Text = "Unknown";
+                    ValuePostal.Text = "Unknown";
+                    ValueTimezone.Text = "Unknown";
+                    ValueLatitude.Text = "Unknown";
+                    ValueLongitude.Text = "Unknown";
+                    ValueIsp.Text = "Unknown";
+                    ValueAsn.Text = "Unknown";
+                    ValueMobile.Text = "Unknown";
+                    ValueProxy.Text = "Unknown";
+                    ValueHosting.Text = "Unknown";
                 });
                 return;
             }
@@ -134,16 +137,16 @@ namespace CheckIP
             Dispatcher.Invoke(() =>
             {
                 IpAddress.Content = _myIp;
-                valueCityCountry.Text = city + " / " + country + " (" + countryCode + ")";
-                valuePostal.Text = postal;
-                valueTimezone.Text = timezone;
-                valueLatitude.Text = latitude;
-                valueLongitude.Text = longitude;
-                valueISP.Text = isp;
-                valueASN.Text = asn;
-                valueMobile.Text = mobile;
-                valueProxy.Text = proxy;
-                valueHosting.Text = hosting;
+                ValueCityCountry.Text = city + " / " + country + " (" + countryCode + ")";
+                ValuePostal.Text = postal;
+                ValueTimezone.Text = timezone;
+                ValueLatitude.Text = latitude;
+                ValueLongitude.Text = longitude;
+                ValueIsp.Text = isp;
+                ValueAsn.Text = asn;
+                ValueMobile.Text = mobile;
+                ValueProxy.Text = proxy;
+                ValueHosting.Text = hosting;
             });
 
             // Update NotifyIcon
@@ -155,16 +158,16 @@ namespace CheckIP
             // Build export string
             var exportString = $@"Report created at {DateTime.Now} for IP {IpAddress.Content}
 
-City / Country: {valueCityCountry.Text}
-Postal: {valuePostal.Text}
-Timezone: {valueTimezone.Text}
-Latitude: {valueLatitude.Text}
-Longitude: {valueLongitude.Text}
-ISP or Organization: {valueISP.Text}
-ASN: {valueASN.Text}
-Is Mobile: {valueMobile.Text}
-Is Proxy: {valueProxy.Text}
-Is Hosting: {valueHosting.Text}
+City / Country: {ValueCityCountry.Text}
+Postal: {ValuePostal.Text}
+Timezone: {ValueTimezone.Text}
+Latitude: {ValueLatitude.Text}
+Longitude: {ValueLongitude.Text}
+ISP or Organization: {ValueIsp.Text}
+ASN: {ValueAsn.Text}
+Is Mobile: {ValueMobile.Text}
+Is Proxy: {ValueProxy.Text}
+Is Hosting: {ValueHosting.Text}
 ";
 
             var saveFileDialog = new SaveFileDialog

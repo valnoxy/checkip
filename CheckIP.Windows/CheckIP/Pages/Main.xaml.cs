@@ -2,11 +2,13 @@
 using System.Drawing;
 using System.IO;
 using System.Net.NetworkInformation;
+using System.Threading;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using CheckIP.Common;
 using Hardcodet.Wpf.TaskbarNotification;
+using Windows.Globalization;
 
 namespace CheckIP
 {
@@ -15,8 +17,6 @@ namespace CheckIP
     /// </summary>
     public partial class Main : Wpf.Ui.Controls.UiWindow
     {
-        public static Main? ContentMain;
-
         public Main()
         {
             InitializeComponent();
@@ -30,8 +30,23 @@ namespace CheckIP
                 );
             };
 
+            // Set current language model
+            var language = Thread.CurrentThread.CurrentCulture.ToString();
+            var dict = new ResourceDictionary();
+            switch (language)
+            {
+                default:
+                case "en-US":
+                    dict.Source = new Uri(@"/CheckIP;component/Localization/ResourceDictionary.xaml", UriKind.Relative);
+                    break;
+                case "de-DE":
+                    dict.Source = new Uri(@"/CheckIP;component/Localization/ResourceDictionary.de-DE.xaml", UriKind.Relative);
+                    break;
+            }
+            Application.Current.Resources.MergedDictionaries.Add(dict);
+
 #if DEBUG
-            debugLabel.Content = "Debug build - This is not a production ready build.";
+            DebugLabel.Content = "Debug build - This is not a production ready build.";
 #endif
         }
 
@@ -40,11 +55,6 @@ namespace CheckIP
             RootNavigation.Navigate("dashboard");
 
             TaskBar.Initialize();
-        }
-
-        private void CloseMenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            Environment.Exit(0);
         }
     }
 }

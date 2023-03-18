@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
@@ -10,7 +10,7 @@
 		<Description>Get more information about an IP address.</Description>
 		<Copyright>Copyright © 2018 - 2023 Exploitox. All rights reserved.</Copyright>
 		<RepositoryUrl>https://github.com/valnoxy/checkip</RepositoryUrl>
-		<Version>2.2.0</Version>
+		<Version>2.2.1</Version>
 		<Platforms>AnyCPU;ARM32;ARM64;x64;x86</Platforms>
 	</PropertyGroup>
 
@@ -286,6 +286,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Page Remove="Localization\ResourceDictionary.xaml" />
 		<Page Remove="Pages\App.xaml" />
 		<Page Remove="W11App.xaml" />
 	</ItemGroup>
@@ -576,6 +577,9 @@
 		<Resource Include="Assets\zm.ico" />
 		<Resource Include="Assets\zw.ico" />
 		<Resource Include="icon.png" />
+		<Resource Include="Localization\ResourceDictionary.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</Resource>
 	</ItemGroup>
 
 </Project>
