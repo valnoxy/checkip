@@ -21,6 +21,8 @@
 </p>
 </br>
 
+<img src="https://raw.githubusercontent.com/valnoxy/valnoxy/main/assets/bar.gif">
+
 ## About CheckIP
 CheckIP is a GUI based application which can provide much information about an IP address.
 
@@ -50,9 +52,19 @@ GNU General Public License for more details.
 
 ---
 
+<h6>
+
 ```Google Play and the Google Play logo are trademarks of Google LLC.```
 
 ```Apple, the Apple logo, Apple Pay, Apple Pencil, Apple TV, Apple Watch, iPad, iPhone, iPod, iPod touch, iTunes, the iTunes logo, Mac, iMac, MacBook, MacBook Pro, MacBook Air, macOS, QuickTime, Siri, watchOS, and 3D Touch are trademarks of Apple Inc., registered in the U.S. and other countries.```
 
+</h6>
+
 ---
-```Copyright (c) 2018 - 2022 valnoxy. By Jonas G. <jonas@exploitox.de>```
+
+<h6 align="center">© 2018 - 2023 valnoxy. All Rights Reserved. 
+<br>
+By Jonas Günner &lt;jonas@exploitox.de&gt;</h6>
+<p align="center">
+	<a href="https://github.com/valnoxy/checkip/blob/main/LICENSE"><img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=GNU%20GENERAL%20PUBLIC%20%20LICENSE&logoColor=d9e0ee&colorA=363a4f&colorB=b7bdf8"/></a>
+</p
