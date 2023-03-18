@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Drawing;
-using System.IO;
-using System.Net.NetworkInformation;
+using System.Diagnostics;
 using System.Threading;
 using System.Windows;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using CheckIP.Common;
-using Hardcodet.Wpf.TaskbarNotification;
-using Windows.Globalization;
+
 
 namespace CheckIP
 {
@@ -33,6 +28,7 @@ namespace CheckIP
             // Set current language model
             var language = Thread.CurrentThread.CurrentCulture.ToString();
             var dict = new ResourceDictionary();
+            Debug.WriteLine("Trying to load language: " + language);
             switch (language)
             {
                 default:
