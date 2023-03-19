@@ -15,7 +15,7 @@
     <system:String x:Key="IsProxy">Proxy</system:String>
     <system:String x:Key="IsHosting">Hosting</system:String>
     <system:String x:Key="ExportInfo">Esporta informazioni</system:String>
-    <system:String x:Key="Unknown">Sconosciuto</system:String>
+    <system:String x:Key="Unknown">Sconosciuto/a</system:String>
     <system:String x:Key="MyIP">IP attuale</system:String>
 
     <!-- About -->
