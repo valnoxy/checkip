@@ -9,17 +9,17 @@
     <system:String x:Key="Timezone">Fuso orario</system:String>
     <system:String x:Key="Latitude">Latitudine</system:String>
     <system:String x:Key="Longitude">Longitudine</system:String>
-    <system:String x:Key="ISPOrOrganization">ISP o Organizzazione</system:String>
+    <system:String x:Key="ISPOrOrganization">ISP/organizzazione</system:String>
     <system:String x:Key="ASN">ASN</system:String>
-    <system:String x:Key="IsMobile">Is Mobile</system:String>
-    <system:String x:Key="IsProxy">Is Proxy</system:String>
-    <system:String x:Key="IsHosting">Is Hosting</system:String>
+    <system:String x:Key="IsMobile">Mobile</system:String>
+    <system:String x:Key="IsProxy">Proxy</system:String>
+    <system:String x:Key="IsHosting">Hosting</system:String>
     <system:String x:Key="ExportInfo">Esporta informazioni</system:String>
     <system:String x:Key="Unknown">Sconosciuto</system:String>
     <system:String x:Key="MyIP">IP attuale</system:String>
 
     <!-- About -->
-    <system:String x:Key="About">Info programma</system:String>
+    <system:String x:Key="About">Info</system:String>
     <system:String x:Key="AboutThisApp">Info su questa app</system:String>
     <system:String x:Key="License">Questo programma è un software gratuito: puoi ridistribuirlo e/o
         modificarlo sotto i termini della licenza GNU General Public License 
