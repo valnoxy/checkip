@@ -17,19 +17,26 @@
     <system:String x:Key="ExportInfo">Export Information</system:String>
     <system:String x:Key="Unknown">Unknown</system:String>
     <system:String x:Key="MyIP">My IP</system:String>
+    <system:String x:Key="True">True</system:String>
+    <system:String x:Key="False">False</system:String>
 
     <!-- About -->
     <system:String x:Key="About">About</system:String>
     <system:String x:Key="AboutThisApp">About this App</system:String>
+    <system:String x:Key="AllRightsReserved">All rights reserved.</system:String>
     <system:String x:Key="License">This program is free software: you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
         the Free Software Foundation, either version 3 of the License, or
         (at your option) any later version.</system:String>
     <system:String x:Key="ThirdPartyLibraries">Third Party Libraries</system:String>
     <system:String x:Key="ThirdPartyLibrariesDescription">List of all used open-source libraries and images.</system:String>
+    <system:String x:Key="By">{0} by {1}</system:String>
     <system:String x:Key="SourceCodeBtn">Source Code on GitHub</system:String>
     <system:String x:Key="HomepageBtn">Homepage</system:String>
     <system:String x:Key="LicenseBtn">License</system:String>
+
+    <!-- Report -->
+    <system:String x:Key="ReportCreatedMessage">Report created at {0} for IP address {1}</system:String>
 
     <!-- Error's -->
     <system:String x:Key="ErrorReservedRange">Error: Reserved range</system:String>

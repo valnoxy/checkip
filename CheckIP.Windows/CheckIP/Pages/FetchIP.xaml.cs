@@ -115,6 +115,9 @@ namespace CheckIP
             }
 
             // Set Variable labels
+            var localizeMobile = Common.LocalizationManager.LocalizeValue(mobile);
+            var localizeProxy = Common.LocalizationManager.LocalizeValue(proxy);
+            var localizeHosting = Common.LocalizationManager.LocalizeValue(hosting);
             Dispatcher.Invoke(() =>
             {
                 ValueCityCountry.Text = city + " / " + country + " (" + countryCode + ")";
@@ -124,27 +127,41 @@ namespace CheckIP
                 ValueLongitude.Text = longitude;
                 ValueIsp.Text = isp;
                 ValueAsn.Text = asn;
-                ValueMobile.Text = mobile;
-                ValueProxy.Text = proxy;
-                ValueHosting.Text = hosting;
+                ValueMobile.Text = localizeMobile;
+                ValueProxy.Text = localizeProxy;
+                ValueHosting.Text = localizeHosting;
             });
         }
 
         private void ExportBtn_OnClick(object sender, RoutedEventArgs e)
         {
             // Build export string
-            var exportString = $@"Report created at {DateTime.Now} for IP {IpAddress.Text}
+            var reportCreatedMessage = (string)Application.Current.MainWindow.FindResource("ReportCreatedMessage");
+            var formattedMessage = string.Format(reportCreatedMessage, DateTime.Now, IpAddress.Text);
 
-City / Country: {ValueCityCountry.Text}
-Postal: {ValuePostal.Text}
-Timezone: {ValueTimezone.Text}
-Latitude: {ValueLatitude.Text}
-Longitude: {ValueLongitude.Text}
-ISP or Organization: {ValueIsp.Text}
-ASN: {ValueAsn.Text}
-Is Mobile: {ValueMobile.Text}
-Is Proxy: {ValueProxy.Text}
-Is Hosting: {ValueHosting.Text}
+            var cityAndCountry = (string)Application.Current.MainWindow.FindResource("CityAndCountry");
+            var postal = (string)Application.Current.MainWindow.FindResource("Postal");
+            var timezone = (string)Application.Current.MainWindow.FindResource("Timezone");
+            var latitude = (string)Application.Current.MainWindow.FindResource("Latitude");
+            var longitude = (string)Application.Current.MainWindow.FindResource("Longitude");
+            var isp = (string)Application.Current.MainWindow.FindResource("ISPOrOrganization");
+            var asn = (string)Application.Current.MainWindow.FindResource("ASN");
+            var mobile = (string)Application.Current.MainWindow.FindResource("IsMobile");
+            var proxy = (string)Application.Current.MainWindow.FindResource("IsProxy");
+            var hosting = (string)Application.Current.MainWindow.FindResource("IsHosting");
+
+            var exportString = $@"{formattedMessage}
+
+{cityAndCountry}: {ValueCityCountry.Text}
+{postal}: {ValuePostal.Text}
+{timezone}: {ValueTimezone.Text}
+{latitude}: {ValueLatitude.Text}
+{longitude}: {ValueLongitude.Text}
+{isp}: {ValueIsp.Text}
+{asn}: {ValueAsn.Text}
+{mobile}: {ValueMobile.Text}
+{proxy}: {ValueProxy.Text}
+{hosting}: {ValueHosting.Text}
 ";
 
             var saveFileDialog = new SaveFileDialog

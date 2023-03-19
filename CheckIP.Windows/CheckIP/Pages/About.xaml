@@ -88,20 +88,7 @@
                             </StackPanel>
                         </Grid>
                     </ui:CardExpander.Header>
-                    <StackPanel>
-                        <TextBlock
-                            Text="• WPFUI by Lepoco"
-                            TextWrapping="Wrap" />
-                        <TextBlock
-                            Text="• Hardcodet.NotifyIcon.Wpf by Hardcodet"
-                            TextWrapping="Wrap" />
-                        <TextBlock
-                            Text="• Flag Icons by Icons8"
-                            TextWrapping="Wrap" />
-                        <TextBlock
-                            Text="• Newtonsoft.Json by James Newton-King"
-                            TextWrapping="Wrap" />
-                    </StackPanel>
+                    <StackPanel x:Name="ThirdPartyList"/>
                 </ui:CardExpander>
                 <ui:Hyperlink
                     Content="{DynamicResource SourceCodeBtn}"

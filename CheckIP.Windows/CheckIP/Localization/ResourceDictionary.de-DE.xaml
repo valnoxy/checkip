@@ -17,16 +17,23 @@
     <system:String x:Key="ExportInfo">Informationen exportieren</system:String>
     <system:String x:Key="Unknown">Unbekannt</system:String>
     <system:String x:Key="MyIP">Meine IP</system:String>
+    <system:String x:Key="True">Wahr</system:String>
+    <system:String x:Key="False">Falsch</system:String>
 
     <!-- About -->
     <system:String x:Key="About">Über</system:String>
     <system:String x:Key="AboutThisApp">Über diese App</system:String>
+    <system:String x:Key="AllRightsReserved">Alle Rechte vorbehalten.</system:String>
     <system:String x:Key="License">Dieses Programm ist freie Software: Sie können es unter den Bedingungen der GNU General Public License, wie sie von der Free Software Foundation veröffentlicht wurde, weitergeben und/oder modifizieren, entweder gemäß Version 3 der Lizenz oder (nach Ihrer Wahl) jeder späteren Version.</system:String>
     <system:String x:Key="ThirdPartyLibraries">Drittanbieter Bibliotheken</system:String>
     <system:String x:Key="ThirdPartyLibrariesDescription">Liste aller verwendeten Bibliotheken und Bilder.</system:String>
+    <system:String x:Key="By">{0} von {1}</system:String>
     <system:String x:Key="SourceCodeBtn">Quellcode auf GitHub</system:String>
     <system:String x:Key="HomepageBtn">Homepage</system:String>
     <system:String x:Key="LicenseBtn">Lizenz</system:String>
+
+    <!-- Report -->
+    <system:String x:Key="ReportCreatedMessage">Bericht erstellt am {0} für IP-Adresse {1}</system:String>
 
     <!-- Error's -->
     <system:String x:Key="ErrorReservedRange">Fehler: Reservierter Bereich</system:String>
