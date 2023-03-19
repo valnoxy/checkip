@@ -38,6 +38,9 @@ namespace CheckIP
                 case "de-DE":
                     dict.Source = new Uri(@"/CheckIP;component/Localization/ResourceDictionary.de-DE.xaml", UriKind.Relative);
                     break;
+                case "it-IT":
+                    dict.Source = new Uri(@"/CheckIP;component/Localization/ResourceDictionary.it-IT.xaml", UriKind.Relative);
+                    break;
             }
             Application.Current.Resources.MergedDictionaries.Add(dict);
 
