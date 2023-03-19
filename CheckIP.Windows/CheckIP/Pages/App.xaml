@@ -12,6 +12,7 @@
                 <ui:ControlsDictionary />
                 <ResourceDictionary Source="/CheckIP;component/Localization/ResourceDictionary.xaml"/>
                 <ResourceDictionary Source="/CheckIP;component/Localization/ResourceDictionary.de-DE.xaml"/>
+                <ResourceDictionary Source="/CheckIP;component/Localization/ResourceDictionary.it-IT.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <Style TargetType="{x:Type Label}">
                 <Setter Property="FontFamily" Value="Segoe UI Variable Display"/>
