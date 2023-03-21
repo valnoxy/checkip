@@ -1,0 +1,53 @@
+name: Windows GUI
+
+on:
+  push:
+    branches:
+      - '*'
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup .NET 7.0.x
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 7.0.x
+        
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.1
+
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.6
+        
+    - name: Restore dependencies
+      run: nuget restore CheckIP.Windows\CheckIP.sln
+      
+    - name: Build (x86)
+      run: msbuild.exe CheckIP.Windows\CheckIP.sln /p:platform="x86" /p:configuration="Release"
+      
+    - name: Build (x64)
+      run: msbuild.exe CheckIP.Windows\CheckIP.sln /p:platform="x64" /p:configuration="Release"
+    
+    - name: Create Setup file (x86)
+      run: |
+        "%programfiles(x86)%\\Inno Setup 6\\iscc.exe" "CheckIP.Windows\Setup\ISS\x86.iss"
+      shell: cmd
+
+    - name: Create Setup file (x64)
+      run: |
+        "%programfiles(x86)%\\Inno Setup 6\\iscc.exe" "CheckIP.Windows\Setup\ISS\x64.iss"
+      shell: cmd
+
+    - name: Upload setup artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: CheckIP binaries
+        path: CheckIP.Windows\Setup\*
