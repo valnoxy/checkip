@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName          "CheckIP"
-#define MyAppVersion       GetFileVersion('..\..\CheckIP\bin\Release\net7.0-windows10.0.19041.0\publish\win-x64\CheckIP.exe.exe')
+#define MyAppVersion       GetFileVersion('..\..\CheckIP\bin\x86\Release\CheckIP.exe')
 #define MyAppPlatform      "32bit"
 #define MyAppPublisher     "Exploitox"
 #define MyAppURL           "https://github.com/valnoxy/checkip"
@@ -16,13 +16,13 @@
 AppId={{47128A10-4D16-4AE3-AE08-F311BDB04571}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
-AppVerName={#MyAppName} {#MyAppVersion} ({#MyAppPlaform})
+AppVerName={#MyAppName} {#MyAppVersion} ({#MyAppPlatform})
 
-VersionInfoDescription={#MyAppName} installer
+VersionInfoDescription={#MyAppName} Installer
 VersionInfoVersion={#MyAppVersion}
 VersionInfoProductName={#MyAppName}
 VersionInfoProductVersion={#MyAppVersion}
-AppCopyright={#MyAppPublisher} {#MyAppStartingYear}-{#MyAppEndingYear}
+AppCopyright=Copyright © {#MyAppStartingYear} - {#MyAppEndingYear} {#MyAppPublisher}. All rights reserved.
 
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
@@ -44,7 +44,7 @@ LicenseFile=..\..\..\LICENSE
 ;PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=commandline
 OutputDir=..\Output
-OutputBaseFilename=CheckIP-x86
+OutputBaseFilename=CheckIP_{#MyAppVersion}_x86
 Compression=lzma
 SolidCompression=yes
 
@@ -57,7 +57,7 @@ Name: "italian"; MessagesFile: "compiler:Languages\Italian.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "..\..\CheckIP\bin\Release\net7.0-windows10.0.19041.0\publish\win-x64\*"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\CheckIP\bin\x86\Release\*"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

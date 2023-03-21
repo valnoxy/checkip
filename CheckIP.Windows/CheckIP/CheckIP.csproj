@@ -12,6 +12,7 @@
 		<RepositoryUrl>https://github.com/valnoxy/checkip</RepositoryUrl>
 		<Version>2.2.1</Version>
 		<Platforms>AnyCPU;ARM32;ARM64;x64;x86</Platforms>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -286,8 +287,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Page Remove="Localization\ResourceDictionary.de-DE.xaml" />
-		<Page Remove="Localization\ResourceDictionary.xaml" />
 		<Page Remove="Pages\App.xaml" />
 		<Page Remove="W11App.xaml" />
 	</ItemGroup>
@@ -579,11 +578,13 @@
 		<Resource Include="Assets\zw.ico" />
 		<Resource Include="icon.png" />
 		<Resource Include="Localization\ResourceDictionary.de-DE.xaml">
-		  <SubType>Component</SubType>
 		  <Generator>MSBuild:Compile</Generator>
 		</Resource>
 		<Resource Include="Localization\ResourceDictionary.xaml">
 		  <Generator>MSBuild:Compile</Generator>
+		</Resource>
+		<Resource Include="Localization\ResourceDictionary.it-IT.xaml">
+			<Generator>MSBuild:Compile</Generator>
 		</Resource>
 	</ItemGroup>
 
