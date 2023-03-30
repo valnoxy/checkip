@@ -5,7 +5,7 @@
              xmlns:ui="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CheckIP.Avalonia.Pages.About">
-	<StackPanel Margin="20">
+    <StackPanel Margin="20">
         <Label Content="About" HorizontalAlignment="Left" Margin="-6,0,0,30" VerticalAlignment="Top" FontSize="25"/>
         <Image x:Name="LogoImg" Source="{SvgImage avares://CheckIP.Avalonia/Assets/Logo.svg}" Height="40" Margin="0,0,0,30"/>
         <StackPanel Spacing="5">
@@ -25,6 +25,21 @@
                    Margin="-4,-10,0,0"
                    FontSize="15"/>
 
+            <Label x:Name="AvaloniaVersion"
+                   Content="Avalonia"
+                   Margin="-4,0,0,0"
+                   FontSize="15"/>
+
+            <Label x:Name="FluentAvaloniaVersion"
+                   Content="FluentAvalonia"
+                   Margin="-4,-10,0,0"
+                   FontSize="15"/>
+
+            <Label x:Name="NewtonsoftVersion"
+                   Content="Newtonsoft.Json"
+                   Margin="-4,-10,0,0"
+                   FontSize="15"/>
+
             <TextBlock x:Name="LicenseText" VerticalAlignment="Top" FontSize="15" TextWrapping="WrapWithOverflow" Height="100">
                 This program is free software: you can redistribute it and/or modify
                 it under the terms of the GNU General Public License as published by
@@ -33,5 +48,19 @@
             </TextBlock>
 
         </StackPanel>
+        <StackPanel Spacing="5">
+            <ui:HyperlinkButton
+                Content="Source Code on GitHub"
+                NavigateUri="https://github.com/valnoxy/checkip"
+                FontSize="15" />
+			<ui:HyperlinkButton
+                Content="Homepage"
+                NavigateUri="https://exploitox.de"
+                FontSize="15" />
+			<ui:HyperlinkButton
+                Content="GNU General Public License"
+                NavigateUri="https://exploitox.de/license/checkip"
+                FontSize="15" />
+		</StackPanel>
     </StackPanel>
 </UserControl>
