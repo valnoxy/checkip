@@ -6,18 +6,19 @@
              x:Class="CheckIP.Avalonia.Pages.MyIP">
 	<StackPanel Margin="20,20,18,0">
 		<Label Content="My IP" HorizontalAlignment="Left" Margin="-6,0,0,0" VerticalAlignment="Top" FontSize="25"/>
-		<StackPanel>
+		<StackPanel Spacing="5">
 			<Label Content="IP Address" HorizontalAlignment="Left" Margin="-6,0,0,0" VerticalAlignment="Top" FontSize="15"/>
 
             <Label x:Name="IpAddress"
                    Content="Unknown"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Top"
+                   Margin="0,3,0,0"
                    FontSize="25"
                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
 		</StackPanel>
 
-		<StackPanel>
+		<StackPanel Spacing="5">
 			<Label Content="Information"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Top"

@@ -7,16 +7,16 @@
 
     <StackPanel Margin="20,20,18,0">
         <Label Content="Fetch" HorizontalAlignment="Left" Margin="-6,0,0,0" VerticalAlignment="Top" FontSize="25"/>
-        <StackPanel>
+        <StackPanel Spacing="5">
 			<Label Content="IP Address" HorizontalAlignment="Left" Margin="-6,0,0,0" VerticalAlignment="Top" FontSize="15"/>
 
 			<Grid ColumnDefinitions="*,Auto">
                 <TextBox x:Name="IpAddress" Margin="0,0,5,0" Grid.Column="0" TextWrapping="Wrap" VerticalAlignment="Top" KeyDown="OnKeyDownHandler"/>
 				<Button Grid.Column="1" Content="Fetch" HorizontalAlignment="Right" VerticalAlignment="Top" Height="34" Click="FetchIP_Click" Cursor="Hand"/>
 			</Grid>
-		</StackPanel>
+        </StackPanel>
 
-		<StackPanel>
+		<StackPanel Spacing="5">
 			<Label Content="Information"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Top"
