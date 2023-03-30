@@ -11,10 +11,12 @@ namespace CheckIP.Avalonia
     public partial class Main : Window
     {
         public NavigationView? NavView;
+        public static Main Instance { get; private set; }
+
         public Main()
         {
             InitializeComponent();
-
+            Instance = this;
 #if DEBUG
             DebugLabel.Content = "Avalonia Debug build - This is not a production ready build.";
             DebugLabel.IsVisible = true;

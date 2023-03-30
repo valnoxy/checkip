@@ -9,6 +9,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json.Linq;
+using Avalonia.Platform.Storage;
+using System.Diagnostics;
 
 namespace CheckIP.Avalonia.Pages
 {
@@ -40,7 +42,10 @@ namespace CheckIP.Avalonia.Pages
             var validateIp = IPAddress.TryParse(_myIp, out var ip);
             if (!validateIp)
             {
-                ErrorLabel.Content = "Error: This is not a valid IP address";
+                Dispatcher.UIThread.InvokeAsync(() =>
+                {
+                    ErrorLabel.Content = "Error: This is not a valid IP address";
+                });
                 return;
             }
 
@@ -119,10 +124,15 @@ namespace CheckIP.Avalonia.Pages
             });
         }
 
-        private void ExportBtn_OnClick(object sender, RoutedEventArgs e)
+        private void ExportBtn_OnClick(object? sender, RoutedEventArgs e) => Task.Run(ExportTask);
+        private async Task ExportTask()
         {
-            // Build export string
-            var exportString = $@"Report created at {DateTime.Now} for IP {IpAddress.Text}
+            try
+            {
+                await Dispatcher.UIThread.InvokeAsync(async () =>
+                {
+                    var exportString = $@"Report created at {DateTime.Now} for IP {IpAddress.Text}
+
 City / Country: {ValueCityCountry.Text}
 Postal: {ValuePostal.Text}
 Timezone: {ValueTimezone.Text}
@@ -134,23 +144,30 @@ Is Mobile: {ValueMobile.Text}
 Is Proxy: {ValueProxy.Text}
 Is Hosting: {ValueHosting.Text}
 ";
-
-            var saveFileDialog = new SaveFileDialog
-            {
-                Filters =
-                {
-                    new FileDialogFilter
+                    var options = new FilePickerSaveOptions
                     {
-                        Name = "Text file",
-                        Extensions = new List<string> {"txt"}
-                    }
-                },
-                InitialFileName = "CheckIP_Report.txt"
-            };
-            var SettingsFileName = saveFileDialog.ShowAsync;
+                        Title = "Export CheckIP Fetch Report",
+                        ShowOverwritePrompt = true,
+                        DefaultExtension = "txt",
+                        FileTypeChoices = new FilePickerFileType[]
+                        {
+                            new("Text File (*.txt)") { Patterns = new[] { "txt" } }
+                        }
+                    };
 
-            if (SettingsFileName != null)
-                File.WriteAllText(SettingsFileName.ToString(), exportString);
+                    var selectedFile = await Main.Instance.StorageProvider.SaveFilePickerAsync(options);
+                    if (selectedFile.Path != null)
+                    {
+                        var path = selectedFile.Path;
+                        File.WriteAllTextAsync(path.LocalPath, exportString);
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.ToString());
+            }
+
         }
     }
 }
