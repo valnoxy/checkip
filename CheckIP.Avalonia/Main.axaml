@@ -4,8 +4,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ui="using:FluentAvalonia.UI.Controls"
         mc:Ignorable="d"
-        MaxHeight="638" MaxWidth="512"
-        MinHeight="638" MinWidth="512"
+        MaxHeight="615" MaxWidth="512"
+        MinHeight="615" MinWidth="512"
         CanResize="False"
         x:Class="CheckIP.Avalonia.Main"
         Title="CheckIP">

@@ -10,7 +10,8 @@
 		<Description>Get more information about an IP address.</Description>
 		<Copyright>Copyright © 2018 - 2023 Exploitox. All rights reserved.</Copyright>
 		<RepositoryUrl>https://github.com/valnoxy/checkip</RepositoryUrl>
-		<Version>0.1.0-dev3</Version>
+		<Version>0.1.0-dev4</Version>
+		<RuntimeIdentifiers>osx-x64;osx-arm64;linux-x64;linux-arm64</RuntimeIdentifiers>
 	</PropertyGroup>
 	<ItemGroup>
 	  <None Remove="Assets\Logo.svg" />
