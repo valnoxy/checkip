@@ -10,7 +10,7 @@ using System.Diagnostics;
 using System.IO;
 using Avalonia.Platform.Storage;
 
-namespace CheckIP.Avalonia.Pages
+namespace CheckIP.Pages
 {
     public partial class MyIP : UserControl
     {

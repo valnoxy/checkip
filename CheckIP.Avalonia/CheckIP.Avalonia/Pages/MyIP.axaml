@@ -3,18 +3,20 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="CheckIP.Avalonia.Pages.FetchIP">
-
-    <StackPanel Margin="20,20,18,0">
-        <Label Content="Fetch" HorizontalAlignment="Left" Margin="-6,0,0,0" VerticalAlignment="Top" FontSize="25"/>
-        <StackPanel Spacing="5">
+             x:Class="CheckIP.Pages.MyIP">
+	<StackPanel Margin="20,20,18,0">
+		<Label Content="My IP" HorizontalAlignment="Left" Margin="-6,0,0,0" VerticalAlignment="Top" FontSize="25"/>
+		<StackPanel Spacing="5">
 			<Label Content="IP Address" HorizontalAlignment="Left" Margin="-6,0,0,0" VerticalAlignment="Top" FontSize="15"/>
 
-			<Grid ColumnDefinitions="*,Auto">
-                <TextBox x:Name="IpAddress" Margin="0,0,5,0" Grid.Column="0" TextWrapping="Wrap" VerticalAlignment="Top" KeyDown="OnKeyDownHandler"/>
-				<Button Grid.Column="1" Content="Fetch" HorizontalAlignment="Right" VerticalAlignment="Top" Height="34" Click="FetchIP_Click" Cursor="Hand"/>
-			</Grid>
-        </StackPanel>
+            <Label x:Name="IpAddress"
+                   Content="Unknown"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
+                   Margin="0,3,0,0"
+                   FontSize="25"
+                   Foreground="{DynamicResource TextFillColorPrimaryBrush}"/>
+		</StackPanel>
 
 		<StackPanel Spacing="5">
 			<Label Content="Information"
@@ -25,7 +27,7 @@
                    FontWeight="SemiBold"/>
 
 			<Grid ColumnDefinitions="135,*">
-                <TextBlock
+				<TextBlock
                     FontSize="14"
                     Margin="0,6,0,0"
                     Text="City / Country" />
@@ -33,7 +35,7 @@
 			</Grid>
 
 			<Grid Margin="0,5,0,0" ColumnDefinitions="135,*">
-                <TextBlock
+				<TextBlock
                     FontSize="14"
                     Margin="0,6,0,0"
                     Text="Postal" />
@@ -41,7 +43,7 @@
 			</Grid>
 
 			<Grid Margin="0,5,0,0" ColumnDefinitions="135,*">
-                <TextBlock
+				<TextBlock
                     FontSize="14"
                     Margin="0,6,0,0"
                     Text="Timezone" />
@@ -49,7 +51,7 @@
 			</Grid>
 
 			<Grid Margin="0,5,0,0" ColumnDefinitions="135,*">
-                <TextBlock
+				<TextBlock
                     FontSize="14"
                     Margin="0,6,0,0"
                     Text="Latitude" />
@@ -57,7 +59,7 @@
 			</Grid>
 
 			<Grid Margin="0,5,0,0" ColumnDefinitions="135,*">
-                <TextBlock
+				<TextBlock
                     FontSize="14"
                     Margin="0,6,0,0"
                     Text="Longitude" />
@@ -65,7 +67,7 @@
 			</Grid>
 
 			<Grid Margin="0,5,0,0" ColumnDefinitions="135,*">
-                <TextBlock
+				<TextBlock
                     FontSize="14"
                     Margin="0,6,0,0"
                     Text="ISP or Organization" />
@@ -73,7 +75,7 @@
 			</Grid>
 
 			<Grid Margin="0,5,0,0" ColumnDefinitions="135,*">
-                <TextBlock
+				<TextBlock
                     FontSize="14"
                     Margin="0,6,0,0"
                     Text="ASN" />
@@ -81,7 +83,7 @@
 			</Grid>
 
 			<Grid Margin="0,5,0,0" ColumnDefinitions="135,*">
-                <TextBlock
+				<TextBlock
                     FontSize="14"
                     Margin="0,6,0,0"
                     Text="Is Mobile" />
@@ -89,7 +91,7 @@
 			</Grid>
 
 			<Grid Margin="0,5,0,0" ColumnDefinitions="135,*">
-                <TextBlock
+				<TextBlock
                     FontSize="14"
                     Margin="0,6,0,0"
                     Text="Is Proxy" />
@@ -97,14 +99,14 @@
 			</Grid>
 
 			<Grid Margin="0,5,0,0" ColumnDefinitions="135,*">
-                <TextBlock
+				<TextBlock
                     FontSize="14"
                     Margin="0,6,0,0"
                     Text="Is Hosting" />
 				<TextBox x:Name="ValueHosting" Grid.Column="1" IsEnabled="false" />
 			</Grid>
-			
-            <Button Margin="0,10,0,0"
+
+			<Button Margin="0,10,0,0"
                     Content="Export information"
                     Click="ExportBtn_OnClick"
                     HorizontalAlignment="Stretch"/>

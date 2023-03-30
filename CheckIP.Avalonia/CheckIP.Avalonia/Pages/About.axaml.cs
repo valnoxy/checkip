@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.Reflection;
 using Avalonia;
 
-namespace CheckIP.Avalonia.Pages
+namespace CheckIP.Pages
 {
     public partial class About : UserControl
     {

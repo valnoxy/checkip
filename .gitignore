@@ -437,3 +437,6 @@ xcuserdata/
 !*.xcworkspace/contents.xcworkspacedata
 /*.gcno
 **/xcshareddata/WorkspaceSettings.xcsettings
+
+## Avalonia Build Output
+CheckIP.Avalonia/Output/*

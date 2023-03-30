@@ -5,16 +5,36 @@
 		<Nullable>enable</Nullable>
 		<BuiltInComInteropSupport>true</BuiltInComInteropSupport>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
+		<ApplicationIcon>CheckIP.ico</ApplicationIcon>
+		<ProductName>CheckIP</ProductName>
 		<Authors>valnoxy</Authors>
 		<Company>Exploitox</Company>
 		<Description>Get more information about an IP address.</Description>
 		<Copyright>Copyright © 2018 - 2023 Exploitox. All rights reserved.</Copyright>
 		<RepositoryUrl>https://github.com/valnoxy/checkip</RepositoryUrl>
-		<Version>0.1.0-dev4</Version>
+		<Version>1.0.0-preview1</Version>
 		<RuntimeIdentifiers>osx-x64;osx-arm64;linux-x64;linux-arm64</RuntimeIdentifiers>
+
+		<CFBundleName>CheckIP</CFBundleName> <!-- Also defines .app file name -->
+		<CFBundleDisplayName>CheckIP</CFBundleDisplayName>
+		<CFBundleIdentifier>dev.valnoxy.checkip</CFBundleIdentifier>
+		<CFBundleVersion>1.0.0-preview1</CFBundleVersion>
+		<CFBundlePackageType>APPL</CFBundlePackageType>
+		<CFBundleSignature>????</CFBundleSignature>
+		<CFBundleExecutable>CheckIP</CFBundleExecutable>
+		<CFBundleIconFile>CheckIP.icns</CFBundleIconFile> <!-- Will be copied from output directory -->
+		<NSPrincipalClass>NSApplication</NSPrincipalClass>
+		<NSHighResolutionCapable>true</NSHighResolutionCapable>
+		<CFBundleShortVersionString>1.0.0-preview1</CFBundleShortVersionString>
+		<UseAppHost>true</UseAppHost>
+		<RootNamespace>CheckIP</RootNamespace>
 	</PropertyGroup>
+	
 	<ItemGroup>
 	  <None Remove="Assets\Logo.svg" />
+	  <None Update="CheckIP.icns">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -30,6 +50,7 @@
 		<PackageReference Include="FluentAvaloniaUI" Version="2.0.0-preview5" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="XamlNameReferenceGenerator" Version="1.6.1" />
+		<PackageReference Include="Dotnet.Bundle" Version="*" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -1,12 +1,10 @@
 using Avalonia.Controls;
 using FluentAvalonia.Core;
 using FluentAvalonia.UI.Controls;
-using FluentAvalonia.UI.Navigation;
 using System;
 using System.Collections.Generic;
-using CheckIP.Avalonia.Pages;
 
-namespace CheckIP.Avalonia
+namespace CheckIP
 {
     public partial class Main : Window
     {
@@ -57,7 +55,7 @@ namespace CheckIP.Avalonia
         private void NavigationViewChanged(object sender, NavigationViewSelectionChangedEventArgs e)
         {
             if (e.SelectedItem is not NavigationViewItem nvi) return;
-            var smpPage = $"CheckIP.Avalonia.Pages.{nvi.Tag}";
+            var smpPage = $"CheckIP.Pages.{nvi.Tag}";
             var pg = Activator.CreateInstance(Type.GetType(smpPage)!);
             (sender as NavigationView)!.Content = pg;
         }

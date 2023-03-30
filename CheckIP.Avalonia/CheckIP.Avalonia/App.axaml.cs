@@ -3,9 +3,9 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
-using CheckIP.Avalonia.Pages;
+using CheckIP.Pages;
 
-namespace CheckIP.Avalonia
+namespace CheckIP
 {
     public partial class App : Application
     {

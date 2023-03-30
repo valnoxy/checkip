@@ -1,7 +1,7 @@
 ﻿using Avalonia;
 using System;
 
-namespace CheckIP.Avalonia
+namespace CheckIP
 {
     internal class Program
     {

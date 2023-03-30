@@ -7,7 +7,8 @@
         MaxHeight="615" MaxWidth="512"
         MinHeight="615" MinWidth="512"
         CanResize="False"
-        x:Class="CheckIP.Avalonia.Main"
+        x:Class="CheckIP.Main"
+        WindowStartupLocation="CenterScreen"
         Title="CheckIP">
 
     <Grid RowDefinitions="Auto,*">

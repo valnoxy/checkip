@@ -12,7 +12,7 @@ using Newtonsoft.Json.Linq;
 using Avalonia.Platform.Storage;
 using System.Diagnostics;
 
-namespace CheckIP.Avalonia.Pages
+namespace CheckIP.Pages
 {
     public partial class FetchIP : UserControl
     {
