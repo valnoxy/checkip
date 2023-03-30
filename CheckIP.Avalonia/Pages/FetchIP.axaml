@@ -1,0 +1,178 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="CheckIP.Avalonia.Pages.FetchIP">
+	<StackPanel Margin="20,20,18,0">
+        <Label Content="Fetch" HorizontalAlignment="Left" Margin="-6,0,0,0" VerticalAlignment="Top" FontSize="25"/>
+        <StackPanel>
+			<Label Content="IP Address" HorizontalAlignment="Left" Margin="-6,0,0,0" VerticalAlignment="Top" FontSize="15"/>
+
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="Auto"/>
+				</Grid.ColumnDefinitions>
+
+				<TextBox x:Name="IpAddress" Margin="0,0,5,0" Grid.Column="0" TextWrapping="Wrap" VerticalAlignment="Top" KeyDown="OnKeyDownHandler"/>
+				<Button Grid.Column="1" Content="Fetch" HorizontalAlignment="Right" VerticalAlignment="Top" Height="34" Click="FetchIP_Click" Cursor="Hand"/>
+			</Grid>
+		</StackPanel>
+
+		<StackPanel>
+			<Label Content="Information"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   FontSize="24"
+                   Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                   Margin="-6,5,0,0"
+                   FontWeight="SemiBold"/>
+
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="135"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+
+				<TextBlock
+                    FontSize="14"
+                    Margin="0,6,0,0"
+                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                    Text="City / Country" />
+				<TextBox x:Name="valueCityCountry" Grid.Column="1" IsEnabled="false" />
+			</Grid>
+
+			<Grid Margin="0,5,0,0">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="135"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+
+				<TextBlock
+                    FontSize="14"
+                    Margin="0,6,0,0"
+                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                    Text="Postal" />
+				<TextBox x:Name="valuePostal" Grid.Column="1" IsEnabled="false" />
+			</Grid>
+			<Grid Margin="0,5,0,0">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="135"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+
+				<TextBlock
+                    FontSize="14"
+                    Margin="0,6,0,0"
+                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                    Text="Timezone" />
+				<TextBox x:Name="valueTimezone" Grid.Column="1" IsEnabled="false" />
+			</Grid>
+			<Grid Margin="0,5,0,0">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="135"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+
+				<TextBlock
+                    FontSize="14"
+                    Margin="0,6,0,0"
+                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                    Text="Latitude" />
+				<TextBox x:Name="valueLatitude" Grid.Column="1" IsEnabled="false" />
+			</Grid>
+			<Grid Margin="0,5,0,0">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="135"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+
+				<TextBlock
+                    FontSize="14"
+                    Margin="0,6,0,0"
+                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                    Text="Longitude" />
+				<TextBox x:Name="valueLongitude" Grid.Column="1" IsEnabled="false" />
+			</Grid>
+			<Grid Margin="0,5,0,0">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="135"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+
+				<TextBlock
+                    FontSize="14"
+                    Margin="0,6,0,0"
+                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                    Text="ISP or Organization" />
+				<TextBox x:Name="valueISP" Grid.Column="1" IsEnabled="false" />
+			</Grid>
+			<Grid Margin="0,5,0,0">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="135"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+
+				<TextBlock
+                    FontSize="14"
+                    Margin="0,6,0,0"
+                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                    Text="ASN" />
+				<TextBox x:Name="valueASN" Grid.Column="1" IsEnabled="false" />
+			</Grid>
+			<Grid Margin="0,5,0,0">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="135"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+
+				<TextBlock
+                    FontSize="14"
+                    Margin="0,6,0,0"
+                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                    Text="Is Mobile" />
+				<TextBox x:Name="valueMobile" Grid.Column="1" IsEnabled="false" />
+			</Grid>
+			<Grid Margin="0,5,0,0">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="135"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+
+				<TextBlock
+                    FontSize="14"
+                    Margin="0,6,0,0"
+                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                    Text="Is Proxy" />
+				<TextBox x:Name="valueProxy" Grid.Column="1" IsEnabled="false" />
+			</Grid>
+			<Grid Margin="0,5,0,0">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="135"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+
+				<TextBlock
+                    FontSize="14"
+                    Margin="0,6,0,0"
+                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                    Text="Is Hosting" />
+				<TextBox x:Name="valueHosting" Grid.Column="1" IsEnabled="false" />
+			</Grid>
+			<Button Margin="0,10,0,0"
+                    Content="Export information"
+                    Click="ExportBtn_OnClick"
+                    HorizontalAlignment="Stretch"/>
+		</StackPanel>
+
+		<Label x:Name="errorLabel"
+               Content=""
+               HorizontalAlignment="Right"
+               HorizontalContentAlignment="Right"
+               Margin="0,0,-6,-33"
+               VerticalAlignment="Bottom"
+               Foreground="Red"
+               FontSize="15"/>
+	</StackPanel>
+</UserControl>

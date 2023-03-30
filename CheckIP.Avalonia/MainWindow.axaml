@@ -1,0 +1,48 @@
+<ui:CoreWindow xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ui="using:FluentAvalonia.UI.Controls"
+        mc:Ignorable="d"
+        MaxHeight="638" MaxWidth="512"
+        MinHeight="638" MinWidth="512"
+        CanResize="False"
+        x:Class="CheckIP.Avalonia.MainWindow"
+        Title="CheckIP">
+	
+    <Grid RowDefinitions="Auto,*">
+        <Grid Grid.Row="1" Margin="0">
+			<ui:NavigationView
+                x:Name="RootNavigation"
+                PaneDisplayMode="LeftCompact"
+                IsSettingsVisible="False"
+                Margin="6,0,6,0">
+				<ui:NavigationView.MenuItems>
+					<ui:NavigationViewItem
+                        Content="Fetch"
+                        Icon="🔍"
+                        Tag="FetchIP" />
+                    <ui:NavigationViewItem
+                        Content="My IP"
+                        Icon="📍"
+                        Tag="MyIP" />
+                </ui:NavigationView.MenuItems>
+                <ui:NavigationView.FooterMenuItems>
+					<ui:NavigationViewItem
+						Content="About"
+						Icon="ℹ️"
+						Tag="about" />
+                </ui:NavigationView.FooterMenuItems>
+            </ui:NavigationView>
+        </Grid>
+
+		<Label x:Name="DebugLabel"
+               Grid.Row="0"
+               Content=""
+               HorizontalContentAlignment="Right"
+               HorizontalAlignment="Right"
+               Margin="0,12,40,0"
+               Foreground="Red"
+               FontSize="13"/>
+    </Grid>
+</ui:CoreWindow>

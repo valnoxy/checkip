@@ -1,0 +1,9 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:styling="clr-namespace:FluentAvalonia.Styling;assembly=FluentAvalonia"
+             x:Class="CheckIP.Avalonia.App">
+    <Application.Styles>
+        <styling:FluentAvaloniaTheme />
+		<!--<FluentTheme Mode="Light"/>-->
+    </Application.Styles>
+</Application>
