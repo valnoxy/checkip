@@ -1,6 +1,9 @@
+using System;
 using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using CheckIP.Avalonia.Pages;
 
 namespace CheckIP.Avalonia
 {
@@ -19,6 +22,21 @@ namespace CheckIP.Avalonia
             }
 
             base.OnFrameworkInitializationCompleted();
+        }
+
+        private void NativeMenuItem_OnClick(object? sender, EventArgs e)
+        {
+            var window = new Window() 
+            {
+                Title = "About CheckIP",
+                Content = new About(),
+                MaxHeight = 500,
+                MaxWidth = 400,
+                MinHeight = 500,
+                MinWidth = 400,
+                CanResize = false
+            };
+            window.Show();
         }
     }
 }
