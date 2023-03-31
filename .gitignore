@@ -353,6 +353,9 @@ MigrationBackup/
 *.keystore
 *.pw
 
+# Rider
+.idea/
+
 ### macOS ###
 # General
 .DS_Store
@@ -440,3 +443,5 @@ xcuserdata/
 
 ## Avalonia Build Output
 CheckIP.Avalonia/Output/*
+CheckIP.Avalonia/macOS.Sign/App
+*.pkg
