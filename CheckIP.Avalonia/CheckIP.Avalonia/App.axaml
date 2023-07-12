@@ -1,0 +1,14 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:styling="clr-namespace:FluentAvalonia.Styling;assembly=FluentAvalonia"
+             x:Class="CheckIP.App"
+             Name="CheckIP">
+    <Application.Styles>
+        <styling:FluentAvaloniaTheme />
+    </Application.Styles>
+    <NativeMenu.Menu>
+        <NativeMenu>
+            <NativeMenuItem Header="About CheckIP" Click="NativeMenuItem_OnClick" />
+        </NativeMenu>
+    </NativeMenu.Menu>
+</Application>

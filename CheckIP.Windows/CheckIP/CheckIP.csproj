@@ -13,6 +13,7 @@
 		<Version>2.2.1</Version>
 		<Platforms>AnyCPU;ARM32;ARM64;x64;x86</Platforms>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<RuntimeIdentifiers>win-x86;win-x64</RuntimeIdentifiers>
 	</PropertyGroup>
 
 	<ItemGroup>

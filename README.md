@@ -4,6 +4,7 @@
 
 [![Android](https://img.shields.io/badge/Android-Xamarin-brightgreen.svg)](https://github.com/valnoxy/checkip/tree/main/CheckIP.Mobile)
 [![iOS](https://img.shields.io/badge/iOS-Xamarin-green)](https://github.com/valnoxy/checkip/tree/main/CheckIP.Mobile)
+[![macOS](https://img.shields.io/badge/macOS-Avalonia-purple)](https://github.com/valnoxy/checkip/tree/main/CheckIP.MacOS)
 [![Windows](https://img.shields.io/badge/Windows-WPF-blue)](https://github.com/valnoxy/checkip/tree/main/CheckIP.Windows)
 [![License](https://img.shields.io/badge/license-GNU%20General%20Public%20License-purple)](/LICENSE)
 [![Downloads](https://img.shields.io/github/downloads/valnoxy/checkip/total.svg)](https://github.com/valnoxy/checkip/releases)
@@ -11,6 +12,8 @@
    <strong>Status: </strong>Maintained
    <br />
    <strong>WPF Version: </strong>2.2.1
+   <br />
+   <strong>Avalonia (macOS) Version: </strong>0.1.0-dev (WIP)
    <br />
    <strong>Xamarin Version: </strong>2.1.0-alpha2
    <br />
