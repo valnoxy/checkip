@@ -6,7 +6,7 @@
 [![iOS](https://img.shields.io/badge/iOS-Xamarin-green)](https://github.com/valnoxy/checkip/tree/main/CheckIP.Mobile)
 [![Windows](https://img.shields.io/badge/Windows-WPF-blue)](https://github.com/valnoxy/checkip/tree/main/CheckIP.Windows)
 [![License](https://img.shields.io/badge/license-GNU%20General%20Public%20License-purple)](/LICENSE)
-
+[![Downloads](https://img.shields.io/github/downloads/valnoxy/checkip/total.svg)](https://github.com/valnoxy/checkip/releases)
 <p align="center">
    <strong>Status: </strong>Maintained
    <br />
