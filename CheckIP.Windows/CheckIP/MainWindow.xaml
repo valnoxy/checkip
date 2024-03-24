@@ -68,7 +68,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Column="1" x:Name="DebugString" Text="Debug" Margin="0,17,50,0" Foreground="Red" TextAlignment="Right" HorizontalAlignment="Right"/>
+            <TextBlock Grid.Column="1" x:Name="DebugString" Margin="0,17,50,0" Foreground="Red" TextAlignment="Right" HorizontalAlignment="Right"/>
         </Grid>
     </Grid>
 </ui:FluentWindow>

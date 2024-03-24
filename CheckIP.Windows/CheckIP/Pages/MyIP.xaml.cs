@@ -1,13 +1,13 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.IO;
-using System.Net;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Net.NetworkInformation;
 using System.ComponentModel;
 using CheckIP.Common;
 using System.Collections.Generic;
+using System.Net.Http;
 
 namespace CheckIP
 {
@@ -17,17 +17,17 @@ namespace CheckIP
     public partial class MyIP
     {
         private static string _myIp;
-        private readonly Queue<Action> workQueue = new Queue<Action>();
-        private readonly object queueLock = new object();
-        private readonly BackgroundWorker worker = new BackgroundWorker();
+        private readonly Queue<Action> _workQueue = new Queue<Action>();
+        private readonly object _queueLock = new object();
+        private readonly BackgroundWorker _worker = new BackgroundWorker();
 
         public MyIP()
         {
             InitializeComponent();
 
             _myIp = Task.Run(_GetIPAddress).GetAwaiter().GetResult();
-            worker.DoWork += Worker_DoWork;
-            worker.RunWorkerCompleted += Worker_RunWorkerCompleted;
+            _worker.DoWork += Worker_DoWork;
+            _worker.RunWorkerCompleted += Worker_RunWorkerCompleted;
 
             // Trigger NetworkChange
             NetworkChange.NetworkAddressChanged += NetworkChange_NetworkAvailabilityChanged;
@@ -52,19 +52,19 @@ namespace CheckIP
             });
         }
 
-        [Obsolete("Will be replaced to a async version soon.")]
         private static async Task<string> _GetIPAddress()
         {
             string result = null;
+            using var client = new HttpClient();
             try
             {
-                result = await Task.Run(() => new WebClient().DownloadString("https://ifconfig.me/ip"));
+                result = await client.GetStringAsync("https://ifconfig.me/ip");
             }
             catch
             {
                 try // Alternative source
                 {
-                    result = await Task.Run(() => new WebClient().DownloadString("https://api.ipify.org"));
+                    result = await client.GetStringAsync("https://api.ipify.org");
                 }
                 catch
                 {
@@ -164,12 +164,12 @@ namespace CheckIP
 
         private void EnqueueWork(Action work)
         {
-            lock (queueLock)
+            lock (_queueLock)
             {
-                workQueue.Enqueue(work);
-                if (!worker.IsBusy)
+                _workQueue.Enqueue(work);
+                if (!_worker.IsBusy)
                 {
-                    worker.RunWorkerAsync();
+                    _worker.RunWorkerAsync();
                 }
             }
         }
@@ -177,11 +177,11 @@ namespace CheckIP
         private void Worker_DoWork(object sender, DoWorkEventArgs e)
         {
             Action work = null;
-            lock (queueLock)
+            lock (_queueLock)
             {
-                if (workQueue.Count > 0)
+                if (_workQueue.Count > 0)
                 {
-                    work = workQueue.Dequeue();
+                    work = _workQueue.Dequeue();
                 }
             }
 
@@ -190,11 +190,11 @@ namespace CheckIP
 
         private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            lock (queueLock)
+            lock (_queueLock)
             {
-                if (workQueue.Count > 0)
+                if (_workQueue.Count > 0)
                 {
-                    worker.RunWorkerAsync();
+                    _worker.RunWorkerAsync();
                 }
             }
         }
@@ -203,7 +203,7 @@ namespace CheckIP
         {
             EnqueueWork(() =>
             {
-                _myIp = Task.Run(() => _GetIPAddress()).GetAwaiter().GetResult();
+                _myIp = Task.Run(_GetIPAddress).GetAwaiter().GetResult();
                 FetchAndParse();
             });
         }
