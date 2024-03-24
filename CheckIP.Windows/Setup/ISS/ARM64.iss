@@ -2,8 +2,8 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName          "CheckIP"
-#define MyAppVersion       GetFileVersion('..\..\CheckIP\bin\Release\publish\win-x86\CheckIP.exe')
-#define MyAppPlatform      "32bit"
+#define MyAppVersion       GetFileVersion('..\..\CheckIP\bin\Release\publish\win-arm64\CheckIP.exe')
+#define MyAppPlatform      "arm64"
 #define MyAppPublisher     "Exploitox"
 #define MyAppURL           "https://github.com/valnoxy/checkip"
 #define MyAppExeName       "CheckIP.exe"
@@ -22,7 +22,7 @@ VersionInfoDescription={#MyAppName} Installer
 VersionInfoVersion={#MyAppVersion}
 VersionInfoProductName={#MyAppName}
 VersionInfoProductVersion={#MyAppVersion}
-AppCopyright=Copyright © {#MyAppStartingYear} - {#MyAppEndingYear} {#MyAppPublisher}. All rights reserved.
+AppCopyright=Copyright © {#MyAppStartingYear} - {#MyAppEndingYear} {#MyAppPublisher}. All rights reserved.       
 
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
@@ -36,7 +36,9 @@ WizardStyle=modern
 ShowLanguageDialog=yes
 UsePreviousLanguage=no
 
-DefaultDirName={commonpf32}\{#MyAppPublisher}\{#MyAppName}
+ArchitecturesInstallIn64BitMode=arm64
+
+DefaultDirName={commonpf64}\{#MyAppPublisher}\{#MyAppName}
 UsePreviousAppDir=yes
 DisableProgramGroupPage=yes
 LicenseFile=..\..\..\LICENSE
@@ -44,7 +46,7 @@ LicenseFile=..\..\..\LICENSE
 ;PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=commandline
 OutputDir=..\Output
-OutputBaseFilename=CheckIP_{#MyAppVersion}_x86
+OutputBaseFilename=CheckIP_{#MyAppVersion}_arm64
 Compression=lzma
 SolidCompression=yes
 
@@ -57,7 +59,7 @@ Name: "italian"; MessagesFile: "compiler:Languages\Italian.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "..\..\CheckIP\bin\Release\publish\win-x86\*"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\CheckIP\bin\Release\publish\win-arm64\*"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

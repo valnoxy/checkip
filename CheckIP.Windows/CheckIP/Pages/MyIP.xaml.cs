@@ -1,57 +1,74 @@
 ﻿using Microsoft.Win32;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
-using System.Collections;
 using System.IO;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media.Imaging;
-using System.Windows.Threading;
-using CheckIP.Common;
 using System.Net.NetworkInformation;
+using System.ComponentModel;
+using CheckIP.Common;
+using System.Collections.Generic;
+using System.Net.Http;
 
 namespace CheckIP
 {
     /// <summary>
     /// Interaktionslogik für MyIP.xaml
     /// </summary>
-    public partial class MyIP : Page
+    public partial class MyIP
     {
         private static string _myIp;
+        private readonly Queue<Action> _workQueue = new Queue<Action>();
+        private readonly object _queueLock = new object();
+        private readonly BackgroundWorker _worker = new BackgroundWorker();
 
         public MyIP()
         {
             InitializeComponent();
 
             _myIp = Task.Run(_GetIPAddress).GetAwaiter().GetResult();
-            Task.Run(ParseIpAddress);
+            _worker.DoWork += Worker_DoWork;
+            _worker.RunWorkerCompleted += Worker_RunWorkerCompleted;
 
             // Trigger NetworkChange
-            NetworkChange.NetworkAddressChanged +=
-                new NetworkAddressChangedEventHandler(NetworkChange_NetworkAvailabilityChanged);
+            NetworkChange.NetworkAddressChanged += NetworkChange_NetworkAvailabilityChanged;
+
+            EnqueueWork(FetchAndParse);
         }
 
-        [Obsolete("Will be replaced to a async version soon.")]
+        private void FetchAndParse()
+        {
+            Dispatcher.Invoke(() =>
+            {
+                InfoPanel.Visibility = Visibility.Collapsed;
+                BusyPanel.Visibility = Visibility.Visible;
+            });
+
+            Task.Run(ParseIpAddress).Wait();
+
+            Dispatcher.Invoke(() =>
+            {
+                InfoPanel.Visibility = Visibility.Visible;
+                BusyPanel.Visibility = Visibility.Collapsed;
+            });
+        }
+
         private static async Task<string> _GetIPAddress()
         {
             string result = null;
+            using var client = new HttpClient();
             try
             {
-                result = await Task.Run(() => new WebClient().DownloadString("https://ifconfig.me/ip"));
+                result = await client.GetStringAsync("https://ifconfig.me/ip");
             }
             catch
             {
-                try
+                try // Alternative source
                 {
-                    result = await Task.Run(() => new WebClient().DownloadString("https://api.ipify.org"));
+                    result = await client.GetStringAsync("https://api.ipify.org");
                 }
                 catch
                 {
-                    
+                    // ignored
                 }
             }
 
@@ -60,112 +77,81 @@ namespace CheckIP
 
         private void ParseIpAddress()
         {
-            // Validate IP
-            var validateIp = IPAddress.TryParse(_myIp, out var ip);
-            if (!validateIp)
+            var data = IPManager.Parse(_myIp);
+
+            Dispatcher.Invoke(() =>
+            {
+                ErrorLabel.Text = string.Empty;
+            });
+
+            if (!data.ParseSuccess)
             {
                 Dispatcher.Invoke(() =>
                 {
-                    ErrorLabel.Content = "Error: This is not a valid IP address";
+                    ErrorLabel.Text = data.Status;
+                    ValueCityCountry.Text = "Unknown";
+                    ValuePostal.Text = "Unknown";
+                    ValueTimezone.Text = "Unknown";
+                    ValueLatitude.Text = "Unknown";
+                    ValueLongitude.Text = "Unknown";
+                    ValueIsp.Text = "Unknown";
+                    ValueAsn.Text = "Unknown";
+                    ValueMobile.IsChecked = false;
+                    ValueProxy.IsChecked = false;
+                    ValueHosting.IsChecked = false;
                 });
                 return;
             }
 
             Dispatcher.Invoke(() =>
             {
-                ErrorLabel.Content = string.Empty;
+                IpAddress.Text = _myIp;
+                ValueCityCountry.Text = data.City + " / " + data.Country + " (" + data.CountryCode + ")";
+                ValuePostal.Text = data.Postal;
+                ValueTimezone.Text = data.Timezone;
+                ValueLatitude.Text = data.Latitude;
+                ValueLongitude.Text = data.Longitude;
+                ValueIsp.Text = data.Isp;
+                ValueAsn.Text = data.Asn;
+                ValueMobile.IsChecked = data.Mobile;
+                ValueProxy.IsChecked = data.Proxy;
+                ValueHosting.IsChecked = data.Hosting;
+                TaskBar.Update(data.Country, data.City, data.IPAddress, data.CountryCode);
             });
-
-            var dataJson = string.Empty;
-            var url = "http://ip-api.com/json/" + _myIp + "?fields=status,message,country,countryCode,city,zip,lat,lon,timezone,isp,as,mobile,proxy,hosting";
-            try
-            {
-                var client = new HttpClient();
-                using var response = client.GetAsync(url).Result;
-                using var content = response.Content;
-                dataJson = content.ReadAsStringAsync().Result;
-            }
-            catch
-            {
-                this.Dispatcher.Invoke(() =>
-                {
-                    ErrorLabel.Content = "Error: No connection to server";
-                });
-            }
-            dynamic data = JObject.Parse(dataJson);
-
-            // Parse data
-            string status = data.status;
-            string message = data.message;
-            string country = data.country;
-            string countryCode = data.countryCode;
-            string city = data.city;
-            string postal = data.zip;
-            string timezone = data.timezone;
-            string latitude = data.lat;
-            string longitude = data.lon;
-            string isp = data.isp;
-            string asn = data.@as;
-            string mobile = data.mobile;
-            string proxy = data.proxy;
-            string hosting = data.hosting;
-
-            // Check status
-            if (status != "success")
-            {
-                this.Dispatcher.Invoke(() =>
-                {
-                    ErrorLabel.Content = "Error: " + message;
-                    valueCityCountry.Text = "Unknown";
-                    valuePostal.Text = "Unknown";
-                    valueTimezone.Text = "Unknown";
-                    valueLatitude.Text = "Unknown";
-                    valueLongitude.Text = "Unknown";
-                    valueISP.Text = "Unknown";
-                    valueASN.Text = "Unknown";
-                    valueMobile.Text = "Unknown";
-                    valueProxy.Text = "Unknown";
-                    valueHosting.Text = "Unknown";
-                });
-                return;
-            }
-
-            // Set Variable labels
-            Dispatcher.Invoke(() =>
-            {
-                IpAddress.Content = _myIp;
-                valueCityCountry.Text = city + " / " + country + " (" + countryCode + ")";
-                valuePostal.Text = postal;
-                valueTimezone.Text = timezone;
-                valueLatitude.Text = latitude;
-                valueLongitude.Text = longitude;
-                valueISP.Text = isp;
-                valueASN.Text = asn;
-                valueMobile.Text = mobile;
-                valueProxy.Text = proxy;
-                valueHosting.Text = hosting;
-            });
-
-            // Update NotifyIcon
-            Dispatcher.Invoke(() => TaskBar.Update(country, city, ip, countryCode));
         }
-        
+
         private void ExportBtn_OnClick(object sender, RoutedEventArgs e)
         {
             // Build export string
-            var exportString = $@"Report created at {DateTime.Now} for IP {IpAddress.Content}
+            var reportCreatedMessage = (string)Application.Current.MainWindow!.FindResource("ReportCreatedMessage");
+            var formattedMessage = string.Format(reportCreatedMessage, DateTime.Now, IpAddress.Text);
 
-City / Country: {valueCityCountry.Text}
-Postal: {valuePostal.Text}
-Timezone: {valueTimezone.Text}
-Latitude: {valueLatitude.Text}
-Longitude: {valueLongitude.Text}
-ISP or Organization: {valueISP.Text}
-ASN: {valueASN.Text}
-Is Mobile: {valueMobile.Text}
-Is Proxy: {valueProxy.Text}
-Is Hosting: {valueHosting.Text}
-";
+            var cityAndCountry = (string)Application.Current.MainWindow.FindResource("CityAndCountry");
+            var postal = (string)Application.Current.MainWindow.FindResource("Postal");
+            var timezone = (string)Application.Current.MainWindow.FindResource("Timezone");
+            var latitude = (string)Application.Current.MainWindow.FindResource("Latitude");
+            var longitude = (string)Application.Current.MainWindow.FindResource("Longitude");
+            var isp = (string)Application.Current.MainWindow.FindResource("ISPOrOrganization");
+            var asn = (string)Application.Current.MainWindow.FindResource("ASN");
+            var mobile = (string)Application.Current.MainWindow.FindResource("IsMobile");
+            var proxy = (string)Application.Current.MainWindow.FindResource("IsProxy");
+            var hosting = (string)Application.Current.MainWindow.FindResource("IsHosting");
+
+            var exportString = $"""
+                                {formattedMessage}
+
+                                {cityAndCountry}: {ValueCityCountry.Text}
+                                {postal}: {ValuePostal.Text}
+                                {timezone}: {ValueTimezone.Text}
+                                {latitude}: {ValueLatitude.Text}
+                                {longitude}: {ValueLongitude.Text}
+                                {isp}: {ValueIsp.Text}
+                                {asn}: {ValueAsn.Text}
+                                {mobile}: {ValueMobile.IsChecked}
+                                {proxy}: {ValueProxy.IsChecked}
+                                {hosting}: {ValueHosting.IsChecked}
+
+                                """;
 
             var saveFileDialog = new SaveFileDialog
             {
@@ -176,10 +162,50 @@ Is Hosting: {valueHosting.Text}
                 File.WriteAllText(saveFileDialog.FileName, exportString);
         }
 
+        private void EnqueueWork(Action work)
+        {
+            lock (_queueLock)
+            {
+                _workQueue.Enqueue(work);
+                if (!_worker.IsBusy)
+                {
+                    _worker.RunWorkerAsync();
+                }
+            }
+        }
+
+        private void Worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Action work = null;
+            lock (_queueLock)
+            {
+                if (_workQueue.Count > 0)
+                {
+                    work = _workQueue.Dequeue();
+                }
+            }
+
+            work?.Invoke();
+        }
+
+        private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            lock (_queueLock)
+            {
+                if (_workQueue.Count > 0)
+                {
+                    _worker.RunWorkerAsync();
+                }
+            }
+        }
+
         private void NetworkChange_NetworkAvailabilityChanged(object sender, EventArgs e)
         {
-            _myIp = Task.Run(_GetIPAddress).GetAwaiter().GetResult();
-            Task.Run(ParseIpAddress);
+            EnqueueWork(() =>
+            {
+                _myIp = Task.Run(_GetIPAddress).GetAwaiter().GetResult();
+                FetchAndParse();
+            });
         }
     }
 }

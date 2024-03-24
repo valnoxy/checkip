@@ -1,0 +1,46 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <system:String x:Key="IPAddress">Indirizzo IP</system:String>
+    <system:String x:Key="Fetch">Verifica</system:String>
+    <system:String x:Key="Information">Informazioni</system:String>
+    <system:String x:Key="CityAndCountry">Città/nazione</system:String>
+    <system:String x:Key="Postal">CAP</system:String>
+    <system:String x:Key="Timezone">Fuso orario</system:String>
+    <system:String x:Key="Latitude">Latitudine</system:String>
+    <system:String x:Key="Longitude">Longitudine</system:String>
+    <system:String x:Key="ISPOrOrganization">ISP/organizzazione</system:String>
+    <system:String x:Key="ASN">ASN</system:String>
+    <system:String x:Key="IsMobile">Mobile</system:String>
+    <system:String x:Key="IsProxy">Proxy</system:String>
+    <system:String x:Key="IsHosting">Hosting</system:String>
+    <system:String x:Key="ExportInfo">Esporta informazioni</system:String>
+    <system:String x:Key="Unknown">Sconosciuto/a</system:String>
+    <system:String x:Key="MyIP">IP attuale</system:String>
+    <system:String x:Key="True">ON</system:String>
+    <system:String x:Key="False">OFF</system:String>
+
+    <!-- About -->
+    <system:String x:Key="About">Info</system:String>
+    <system:String x:Key="AboutThisApp">Info su questa app</system:String>
+    <system:String x:Key="AllRightsReserved">Tutti i diritti riservati.</system:String>
+    <system:String x:Key="License">Questo programma è un software gratuito: puoi ridistribuirlo e/o
+        modificarlo sotto i termini della licenza GNU General Public License 
+        pubblicata dalla Free Software Foundation, versione 3 della Licenza, 
+        o (a tua scelta) qualsiasi versione successiva.</system:String>
+    <system:String x:Key="ThirdPartyLibraries">Librerie di terze parti</system:String>
+    <system:String x:Key="ThirdPartyLibrariesDescription">Elenco di tutte le librerie immagini open source usate.</system:String>
+    <system:String x:Key="By">{0} di {1}</system:String>
+    <system:String x:Key="SourceCodeBtn">Codice sorgente</system:String>
+    <system:String x:Key="HomepageBtn">Pagina home</system:String>
+    <system:String x:Key="DonateBtn">Donare</system:String>
+
+    <!-- Report -->
+    <system:String x:Key="ReportCreatedMessage">Rapporto creato il {0} per {1} indirizzi IP</system:String>
+
+    <!-- Error's -->
+    <system:String x:Key="ErrorReservedRange">Errore: intervallo riservato</system:String>
+    <system:String x:Key="ErrorInvalidIP">Errore: questo non è un indirizzo IP valido</system:String>
+    <system:String x:Key="ErrorNoConnection">Errore: nessuna connessione al server</system:String>
+    <system:String x:Key="ErrorInvalidQuery">Errore: richiesta non valida</system:String>
+</ResourceDictionary>

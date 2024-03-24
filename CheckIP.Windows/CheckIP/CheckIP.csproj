@@ -1,17 +1,25 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
-		<TargetFramework>net7.0-windows10.0.19041.0</TargetFramework>
+		<Nullable>disable</Nullable>
+		<TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
 		<UseWPF>true</UseWPF>
 		<ApplicationIcon>Assets\CheckIP.ico</ApplicationIcon>
 		<Authors>valnoxy</Authors>
 		<Company>Exploitox</Company>
 		<Description>Get more information about an IP address.</Description>
-		<Copyright>Copyright © 2018 - 2023 Exploitox. All rights reserved.</Copyright>
+		<Copyright>Copyright © 2018 - 2024 Exploitox. All rights reserved.</Copyright>
 		<RepositoryUrl>https://github.com/valnoxy/checkip</RepositoryUrl>
-		<Version>2.2.0</Version>
-		<Platforms>AnyCPU;ARM32;ARM64;x64;x86</Platforms>
+		<Version>2.3.0</Version>
+		<Platforms>ARM64;x64;x86;AnyCPU</Platforms>
+		<RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<StartupObject>CheckIP.App</StartupObject>
+		<AssemblyVersion>$(Version)</AssemblyVersion>
+		<FileVersion>$(Version)</FileVersion>
+		<AssemblyInformationalVersion>$(Version)</AssemblyInformationalVersion>
+		<IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -286,15 +294,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Page Remove="Pages\App.xaml" />
-		<Page Remove="W11App.xaml" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<ApplicationDefinition Include="Pages\App.xaml">
+		<Page Update="Pages\About.xaml">
 			<XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-			<Generator>MSBuild:Compile</Generator>
-		</ApplicationDefinition>
+		</Page>
+		<Page Update="Pages\FetchIP.xaml">
+			<XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+		</Page>
+		<Page Update="Pages\MyIP.xaml">
+			<XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+		</Page>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -348,8 +356,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="1.1.0" />
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
-		<PackageReference Include="WPF-UI" Version="2.0.3" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="WPF-UI" Version="3.0.2" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -576,6 +584,15 @@
 		<Resource Include="Assets\zm.ico" />
 		<Resource Include="Assets\zw.ico" />
 		<Resource Include="icon.png" />
+		<Resource Include="Localization\ResourceDictionary.de-DE.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</Resource>
+		<Resource Include="Localization\ResourceDictionary.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</Resource>
+		<Resource Include="Localization\ResourceDictionary.it-IT.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</Resource>
 	</ItemGroup>
 
 </Project>
