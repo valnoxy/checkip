@@ -31,9 +31,9 @@
     <system:String x:Key="ThirdPartyLibraries">Librerie di terze parti</system:String>
     <system:String x:Key="ThirdPartyLibrariesDescription">Elenco di tutte le librerie immagini open source usate.</system:String>
     <system:String x:Key="By">{0} di {1}</system:String>
-    <system:String x:Key="SourceCodeBtn">Codice sorgente su GitHub</system:String>
+    <system:String x:Key="SourceCodeBtn">Codice sorgente</system:String>
     <system:String x:Key="HomepageBtn">Pagina home</system:String>
-    <system:String x:Key="LicenseBtn">Licenza</system:String>
+    <system:String x:Key="DonateBtn">Donare</system:String>
 
     <!-- Report -->
     <system:String x:Key="ReportCreatedMessage">Rapporto creato il {0} per {1} indirizzi IP</system:String>

@@ -1,29 +1,20 @@
-﻿using System;
+﻿using CheckIP.Common;
+using System;
 using System.Diagnostics;
 using System.Threading;
 using System.Windows;
-using CheckIP.Common;
-
+using Wpf.Ui.Controls;
 
 namespace CheckIP
 {
     /// <summary>
     /// Interaktionslogik für Main.xaml
     /// </summary>
-    public partial class Main : Wpf.Ui.Controls.UiWindow
+    public partial class MainWindow
     {
-        public Main()
+        public MainWindow()
         {
             InitializeComponent();
-
-            Loaded += (sender, args) =>
-            {
-                Wpf.Ui.Appearance.Watcher.Watch(
-                  this,                                 // Window class
-                  Wpf.Ui.Appearance.BackgroundType.Mica, // Background type
-                  true                                  // Whether to change accents automatically
-                );
-            };
 
             // Set current language model
             var language = Thread.CurrentThread.CurrentCulture.ToString();
@@ -45,15 +36,19 @@ namespace CheckIP
             Application.Current.Resources.MergedDictionaries.Add(dict);
 
 #if DEBUG
-            DebugLabel.Content = "Debug build - This is not a production ready build.";
+            DebugString.Text = "Debug build";
 #endif
         }
 
-        private void RootNavigation_OnLoaded(object sender, RoutedEventArgs e)
+        private void MainWindow_OnContentRendered(object sender, EventArgs e)
         {
-            RootNavigation.Navigate("dashboard");
-
+            RootNavigation.Navigate(typeof(FetchIP));
             TaskBar.Initialize();
+        }
+
+        private void ThemeSwitch_Click(object sender, RoutedEventArgs e)
+        {
+            WindowBackdropType = WindowBackdropType == WindowBackdropType.Mica ? WindowBackdropType.Tabbed : WindowBackdropType.Mica;
         }
     }
 }

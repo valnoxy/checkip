@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 using Hardcodet.Wpf.TaskbarNotification;
 
@@ -39,6 +34,17 @@ namespace CheckIP.Common
             {
                 Debug.WriteLine(ex);
             }
+        }
+
+        public static BitmapImage Create(string path)
+        {
+            var img = new BitmapImage();
+            img.BeginInit();
+            img.CacheOption = BitmapCacheOption.OnLoad;
+            img.UriSource = new Uri(path, UriKind.RelativeOrAbsolute);
+            img.EndInit();
+            img.Freeze();
+            return img;
         }
     }
 

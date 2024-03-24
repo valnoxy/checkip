@@ -28,9 +28,10 @@
     <system:String x:Key="ThirdPartyLibraries">Drittanbieter Bibliotheken</system:String>
     <system:String x:Key="ThirdPartyLibrariesDescription">Liste aller verwendeten Bibliotheken und Bilder.</system:String>
     <system:String x:Key="By">{0} von {1}</system:String>
-    <system:String x:Key="SourceCodeBtn">Quellcode auf GitHub</system:String>
+    <system:String x:Key="SourceCodeBtn">Quellcode</system:String>
     <system:String x:Key="HomepageBtn">Homepage</system:String>
     <system:String x:Key="LicenseBtn">Lizenz</system:String>
+    <system:String x:Key="DonateBtn">Spenden</system:String>
 
     <!-- Report -->
     <system:String x:Key="ReportCreatedMessage">Bericht erstellt am {0} für IP-Adresse {1}</system:String>

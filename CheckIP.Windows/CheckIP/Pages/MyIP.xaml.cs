@@ -1,37 +1,55 @@
 ﻿using Microsoft.Win32;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
-using System.Collections;
 using System.IO;
 using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media.Imaging;
-using System.Windows.Threading;
-using CheckIP.Common;
 using System.Net.NetworkInformation;
+using System.ComponentModel;
+using CheckIP.Common;
+using System.Collections.Generic;
 
 namespace CheckIP
 {
     /// <summary>
     /// Interaktionslogik für MyIP.xaml
     /// </summary>
-    public partial class MyIP : Page
+    public partial class MyIP
     {
         private static string _myIp;
+        private readonly Queue<Action> workQueue = new Queue<Action>();
+        private readonly object queueLock = new object();
+        private readonly BackgroundWorker worker = new BackgroundWorker();
 
         public MyIP()
         {
             InitializeComponent();
 
             _myIp = Task.Run(_GetIPAddress).GetAwaiter().GetResult();
-            Task.Run(ParseIpAddress);
+            worker.DoWork += Worker_DoWork;
+            worker.RunWorkerCompleted += Worker_RunWorkerCompleted;
 
             // Trigger NetworkChange
             NetworkChange.NetworkAddressChanged += NetworkChange_NetworkAvailabilityChanged;
+
+            EnqueueWork(FetchAndParse);
+        }
+
+        private void FetchAndParse()
+        {
+            Dispatcher.Invoke(() =>
+            {
+                InfoPanel.Visibility = Visibility.Collapsed;
+                BusyPanel.Visibility = Visibility.Visible;
+            });
+
+            Task.Run(ParseIpAddress).Wait();
+
+            Dispatcher.Invoke(() =>
+            {
+                InfoPanel.Visibility = Visibility.Visible;
+                BusyPanel.Visibility = Visibility.Collapsed;
+            });
         }
 
         [Obsolete("Will be replaced to a async version soon.")]
@@ -59,66 +77,18 @@ namespace CheckIP
 
         private void ParseIpAddress()
         {
-            // Validate IP
-            var validateIp = IPAddress.TryParse(_myIp, out var ip);
-            if (!validateIp)
-            {
-                Dispatcher.Invoke(() =>
-                {
-                    var error = (string)Application.Current.MainWindow.FindResource("ErrorInvalidIP");
-                    ErrorLabel.Content = !string.IsNullOrEmpty(error) ? error : "Error: This is not a valid IP address.";
-                });
-                return;
-            }
+            var data = IPManager.Parse(_myIp);
 
             Dispatcher.Invoke(() =>
             {
-                ErrorLabel.Content = string.Empty;
+                ErrorLabel.Text = string.Empty;
             });
 
-            var dataJson = string.Empty;
-            var url = "http://ip-api.com/json/" + _myIp + "?fields=status,message,country,countryCode,city,zip,lat,lon,timezone,isp,as,mobile,proxy,hosting";
-            try
+            if (!data.ParseSuccess)
             {
-                var client = new HttpClient();
-                using var response = client.GetAsync(url).Result;
-                using var content = response.Content;
-                dataJson = content.ReadAsStringAsync().Result;
-            }
-            catch
-            {
-                this.Dispatcher.Invoke(() =>
+                Dispatcher.Invoke(() =>
                 {
-                    var error = (string)Application.Current.MainWindow.FindResource("ErrorInvalidIP");
-                    ErrorLabel.Content = !string.IsNullOrEmpty(error) ? error : "Error: No connection to server";
-                });
-            }
-            dynamic data = JObject.Parse(dataJson);
-
-            // Parse data
-            string status = data.status;
-            string message = data.message;
-            string country = data.country;
-            string countryCode = data.countryCode;
-            string city = data.city;
-            string postal = data.zip;
-            string timezone = data.timezone;
-            string latitude = data.lat;
-            string longitude = data.lon;
-            string isp = data.isp;
-            string asn = data.@as;
-            string mobile = data.mobile;
-            string proxy = data.proxy;
-            string hosting = data.hosting;
-
-            // Check status
-            if (status != "success")
-            {
-                var localizeError = Common.LocalizationManager.LocalizeError(message);
-
-                this.Dispatcher.Invoke(() =>
-                {
-                    ErrorLabel.Content = localizeError;
+                    ErrorLabel.Text = data.Status;
                     ValueCityCountry.Text = "Unknown";
                     ValuePostal.Text = "Unknown";
                     ValueTimezone.Text = "Unknown";
@@ -126,41 +96,35 @@ namespace CheckIP
                     ValueLongitude.Text = "Unknown";
                     ValueIsp.Text = "Unknown";
                     ValueAsn.Text = "Unknown";
-                    ValueMobile.Text = "Unknown";
-                    ValueProxy.Text = "Unknown";
-                    ValueHosting.Text = "Unknown";
+                    ValueMobile.IsChecked = false;
+                    ValueProxy.IsChecked = false;
+                    ValueHosting.IsChecked = false;
                 });
                 return;
             }
 
-            // Set Variable labels
-            var localizeMobile = Common.LocalizationManager.LocalizeValue(mobile);
-            var localizeProxy = Common.LocalizationManager.LocalizeValue(proxy);
-            var localizeHosting = Common.LocalizationManager.LocalizeValue(hosting);
             Dispatcher.Invoke(() =>
             {
-                IpAddress.Content = _myIp;
-                ValueCityCountry.Text = city + " / " + country + " (" + countryCode + ")";
-                ValuePostal.Text = postal;
-                ValueTimezone.Text = timezone;
-                ValueLatitude.Text = latitude;
-                ValueLongitude.Text = longitude;
-                ValueIsp.Text = isp;
-                ValueAsn.Text = asn;
-                ValueMobile.Text = localizeMobile;
-                ValueProxy.Text = localizeProxy;
-                ValueHosting.Text = localizeHosting;
+                IpAddress.Text = _myIp;
+                ValueCityCountry.Text = data.City + " / " + data.Country + " (" + data.CountryCode + ")";
+                ValuePostal.Text = data.Postal;
+                ValueTimezone.Text = data.Timezone;
+                ValueLatitude.Text = data.Latitude;
+                ValueLongitude.Text = data.Longitude;
+                ValueIsp.Text = data.Isp;
+                ValueAsn.Text = data.Asn;
+                ValueMobile.IsChecked = data.Mobile;
+                ValueProxy.IsChecked = data.Proxy;
+                ValueHosting.IsChecked = data.Hosting;
+                TaskBar.Update(data.Country, data.City, data.IPAddress, data.CountryCode);
             });
-
-            // Update NotifyIcon
-            Dispatcher.Invoke(() => TaskBar.Update(country, city, ip, countryCode));
         }
-        
+
         private void ExportBtn_OnClick(object sender, RoutedEventArgs e)
         {
             // Build export string
-            var reportCreatedMessage = (string)Application.Current.MainWindow.FindResource("ReportCreatedMessage");
-            var formattedMessage = string.Format(reportCreatedMessage, DateTime.Now, IpAddress.Content);
+            var reportCreatedMessage = (string)Application.Current.MainWindow!.FindResource("ReportCreatedMessage");
+            var formattedMessage = string.Format(reportCreatedMessage, DateTime.Now, IpAddress.Text);
 
             var cityAndCountry = (string)Application.Current.MainWindow.FindResource("CityAndCountry");
             var postal = (string)Application.Current.MainWindow.FindResource("Postal");
@@ -173,19 +137,21 @@ namespace CheckIP
             var proxy = (string)Application.Current.MainWindow.FindResource("IsProxy");
             var hosting = (string)Application.Current.MainWindow.FindResource("IsHosting");
 
-            var exportString = $@"{formattedMessage}
+            var exportString = $"""
+                                {formattedMessage}
 
-{cityAndCountry}: {ValueCityCountry.Text}
-{postal}: {ValuePostal.Text}
-{timezone}: {ValueTimezone.Text}
-{latitude}: {ValueLatitude.Text}
-{longitude}: {ValueLongitude.Text}
-{isp}: {ValueIsp.Text}
-{asn}: {ValueAsn.Text}
-{mobile}: {ValueMobile.Text}
-{proxy}: {ValueProxy.Text}
-{hosting}: {ValueHosting.Text}
-";
+                                {cityAndCountry}: {ValueCityCountry.Text}
+                                {postal}: {ValuePostal.Text}
+                                {timezone}: {ValueTimezone.Text}
+                                {latitude}: {ValueLatitude.Text}
+                                {longitude}: {ValueLongitude.Text}
+                                {isp}: {ValueIsp.Text}
+                                {asn}: {ValueAsn.Text}
+                                {mobile}: {ValueMobile.IsChecked}
+                                {proxy}: {ValueProxy.IsChecked}
+                                {hosting}: {ValueHosting.IsChecked}
+
+                                """;
 
             var saveFileDialog = new SaveFileDialog
             {
@@ -196,10 +162,50 @@ namespace CheckIP
                 File.WriteAllText(saveFileDialog.FileName, exportString);
         }
 
+        private void EnqueueWork(Action work)
+        {
+            lock (queueLock)
+            {
+                workQueue.Enqueue(work);
+                if (!worker.IsBusy)
+                {
+                    worker.RunWorkerAsync();
+                }
+            }
+        }
+
+        private void Worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Action work = null;
+            lock (queueLock)
+            {
+                if (workQueue.Count > 0)
+                {
+                    work = workQueue.Dequeue();
+                }
+            }
+
+            work?.Invoke();
+        }
+
+        private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            lock (queueLock)
+            {
+                if (workQueue.Count > 0)
+                {
+                    worker.RunWorkerAsync();
+                }
+            }
+        }
+
         private void NetworkChange_NetworkAvailabilityChanged(object sender, EventArgs e)
         {
-            _myIp = Task.Run(_GetIPAddress).GetAwaiter().GetResult();
-            Task.Run(ParseIpAddress);
+            EnqueueWork(() =>
+            {
+                _myIp = Task.Run(() => _GetIPAddress()).GetAwaiter().GetResult();
+                FetchAndParse();
+            });
         }
     }
 }
