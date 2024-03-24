@@ -31,7 +31,7 @@
     <system:String x:Key="ThirdPartyLibraries">Third Party Libraries</system:String>
     <system:String x:Key="ThirdPartyLibrariesDescription">List of all used open-source libraries and images.</system:String>
     <system:String x:Key="By">{0} by {1}</system:String>
-    <system:String x:Key="SourceCodeBtn">Source Code on GitHub</system:String>
+    <system:String x:Key="SourceCodeBtn">Source Code</system:String>
     <system:String x:Key="HomepageBtn">Homepage</system:String>
     <system:String x:Key="DonateBtn">Donate</system:String>
 

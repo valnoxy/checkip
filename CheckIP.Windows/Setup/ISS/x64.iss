@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName          "CheckIP"
-#define MyAppVersion       GetFileVersion('..\..\CheckIP\bin\x64\Release\CheckIP.exe')
+#define MyAppVersion       GetFileVersion('..\..\CheckIP\bin\Release\publish\win-x64\CheckIP.exe')
 #define MyAppPlatform      "64bit"
 #define MyAppPublisher     "Exploitox"
 #define MyAppURL           "https://github.com/valnoxy/checkip"
@@ -22,7 +22,7 @@ VersionInfoDescription={#MyAppName} Installer
 VersionInfoVersion={#MyAppVersion}
 VersionInfoProductName={#MyAppName}
 VersionInfoProductVersion={#MyAppVersion}
-AppCopyright=Copyright © {#MyAppStartingYear} - {#MyAppEndingYear} {#MyAppPublisher}. All rights reserved.       
+AppCopyright=Copyright Â© {#MyAppStartingYear} - {#MyAppEndingYear} {#MyAppPublisher}. All rights reserved.       
 
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
@@ -59,7 +59,7 @@ Name: "italian"; MessagesFile: "compiler:Languages\Italian.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "..\..\CheckIP\bin\x64\Release\*"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\CheckIP\bin\Release\publish\win-x64\*"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

@@ -12,10 +12,14 @@
 		<Copyright>Copyright © 2018 - 2024 Exploitox. All rights reserved.</Copyright>
 		<RepositoryUrl>https://github.com/valnoxy/checkip</RepositoryUrl>
 		<Version>2.3.0</Version>
-		<Platforms>AnyCPU;ARM32;ARM64;x64;x86</Platforms>
+		<Platforms>ARM64;x64;x86;AnyCPU</Platforms>
 		<RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 		<StartupObject>CheckIP.App</StartupObject>
+		<AssemblyVersion>$(Version)</AssemblyVersion>
+		<FileVersion>$(Version)</FileVersion>
+		<AssemblyInformationalVersion>$(Version)</AssemblyInformationalVersion>
+		<IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
 	</PropertyGroup>
 
 	<ItemGroup>

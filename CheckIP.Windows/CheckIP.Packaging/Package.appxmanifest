@@ -9,7 +9,7 @@
   <Identity
     Name="1689valnoxy.CheckIP"
     Publisher="CN=31057B9D-4921-4747-A145-1C1FDFD7E821"
-    Version="2.2.0.0" />
+    Version="2.3.0.0" />
 
   <Properties>
     <DisplayName>CheckIP</DisplayName>
