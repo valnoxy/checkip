@@ -25,11 +25,11 @@
   <h3 align="center">CheckIP</h3>
   <p align="center">
     <p>Discover the World Behind Every Address!</p>
-    </div>
-    <br />
     <a href="https://github.com/valnoxy/checkip/issues">Report Bug</a>
     ·
     <a href="https://github.com/valnoxy/checkip/discussions/">Discussions</a>
+    ·
+    <a href="https://crowdin.com/project/checkip">Help me translate</a>
     <br />
     <br />
     🎉 Version 2.3.0 for Windows is out. Check out the release notes
@@ -78,7 +78,7 @@ CheckIP is available in the Microsoft Store for free.
 </a>
 
 ## 💿 2. Install via Setup
-You can find the setup files here on GitHub. Simply download and run the setup assistant to install CheckIP
+You can find the setup files [here](https://github.com/valnoxy/checkip/releases) on GitHub. Simply download and run the setup assistant to install CheckIP.
 
 # 🖼️ Screenshot
 <img src="https://dl.exploitox.de/checkip/v2.3.0/CheckIP_FetchIP.png" width="350"> <img src="https://dl.exploitox.de/checkip/v2.3.0/CheckIP_MyIP.png" width="350">
